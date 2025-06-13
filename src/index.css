@@ -21,3 +21,32 @@
     font-optical-sizing: auto;
     font-style: normal;
 }
+
+.plus-jakarta-sans-500{
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root[data-theme='light'] {
+  --color-background: #ffffff;
+  --color-text: #000000;
+  --color-theme-primary: #2f65b9;
+  --color-theme-primary-light: #0e1e37;
+  --color-theme-primary-dark: #1c3c6f;
+}
+
+:root[data-theme='dark'] {
+  --color-background: #121212;
+  --color-text: #ffffff;
+  --color-theme-primary: #4e8fff;
+  --color-theme-primary-light: #1c3c6f;
+  --color-theme-primary-dark: #0e1e37;
+}
+
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Poppins', sans-serif;
+}
