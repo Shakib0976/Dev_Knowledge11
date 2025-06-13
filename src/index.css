@@ -1,2 +1,23 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+
+.bg-c1 {
+    background-image: linear-gradient(to right, #34e89e, #0f3443);
+}
+
+.bg-c2 {
+    background-image: linear-gradient(to right, #360033, #0b8793);
+}
+
+.bg-c3 {
+    background-image: linear-gradient(to right, #000428, #004e92);
+}
+
+
+.space-grotesk-500{
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
