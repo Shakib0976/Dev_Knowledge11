@@ -128,7 +128,7 @@ const Home = () => {
 
             {/* Main Content */}
             <main className="flex-1 p-2">
-
+              <Banner></Banner>
             </main>
         </div>
     );

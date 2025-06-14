@@ -95,6 +95,7 @@ const Navbar = () => {
                 {/* Toogle theme contronl button  button */}
 
                 <button onClick={toggleTheme}>
+                    
 
                     {/* mobilde theme */}
 
