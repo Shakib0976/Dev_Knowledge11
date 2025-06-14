@@ -131,7 +131,12 @@ const Register = () => {
                             className="input w-full"
                             placeholder="Password" />
                         {/* button */}
-                        <button type='submit' className="btn hover:text-green-500 font-bold btn-neutral mt-4">Sign up</button>
+
+                        <a href="#_" class="relative mt-4 inline-flex items-center justify-center  overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group">
+                            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-green-500 group-hover:w-full group-hover:h-full"></span>
+                            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+                            <span class="relative"> <button type='submit' className="font-bold text-2xl my-2">Sign up</button></span>
+                        </a>
                         {/* <div className='text-center text-red-700 font-semibold'>{error}</div> */}
                     </form>
                     <div>

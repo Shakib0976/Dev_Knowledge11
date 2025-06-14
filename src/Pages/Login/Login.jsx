@@ -70,7 +70,7 @@ const Login = () => {
                 <p className='text-gray-500 space-grotesk-500 font-bold text-center m-2 mb-6'>Please enter your details to sign in.</p>
             </div>
             <div className="card bg-base-100 mx-auto border border-gray-300 w-11/12  md:w-11/18 lg:w-11/28 shrink-0 shadow-2xl">
-             <div className="card-body">
+                <div className="card-body">
                     <form onSubmit={handleLogin} className="fieldset">
                         {/* email */}
                         <label className="label font-bold text-sm space-grotesk-500">Email</label>
@@ -81,7 +81,7 @@ const Login = () => {
                             className="input w-full"
                             placeholder="enter your name here" />
                         {/* password */}
-                       <label className="label font-bold text-sm space-grotesk-500">Password</label>
+                        <label className="label font-bold text-sm space-grotesk-500">Password</label>
                         <input
 
                             name='password'
@@ -90,9 +90,15 @@ const Login = () => {
                             placeholder="Password" />
                         <div><button type='button' className="link link-hover">Forgot password?</button></div>
                         {/* button */}
-                        <button type='submit' className="btn hover:text-green-500 font-bold btn-neutral mt-4">Signin</button>
+                        <a href="#_" class="relative mt-4 inline-flex items-center justify-center  overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group">
+                            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-green-500 group-hover:w-full group-hover:h-full"></span>
+                            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
+                            <span class="relative"><button type='submit' className="font-bold text-2xl  my-2">Signin</button></span>
+                        </a>
+
                     </form>
-                    <p className='text-center mb-3'>Don't have an account?<span className='text-blue-700'> <Link to='/register'>Sign up</Link></span></p>
+                    <p className='text-center mb-3'>Don't have an account?<span className='text-blue-700'>
+                        <Link to='/register'>Sign up</Link></span></p>
                     <p className='font-bold text-gray-400 text-center'>Or, login with</p>
 
                     {/* google login button */}
