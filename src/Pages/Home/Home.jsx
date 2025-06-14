@@ -4,6 +4,8 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { RxAvatar } from 'react-icons/rx';
 import { motion } from "framer-motion";
+import { Typewriter } from 'react-simple-typewriter';
+import { Carousel } from 'react-responsive-carousel';
 
 const Home = () => {
 
@@ -12,8 +14,8 @@ const Home = () => {
     return (
         <div className="flex  ">
             {/* Sidebar */}
-            <aside className="w-64 m-1 border-1 border-gray-300  p-4">
-                <div className="flex mb-4">
+            <aside className="w-64 m-1 hidden lg:block  shadow-xl border-base-100 p-4">
+                <div className="flex mb-4 h-25">
                     <div>
                         {user?.photoURL ? (
                             <img className='w-15 rounded-full' src={user.photoURL} alt="User Avatar" />
@@ -31,13 +33,21 @@ const Home = () => {
                                 </div>
 
                             ) : (
-                                <motion.div animate={{ color: ["#3b82f6", "#27548A", "#f59e0b", "#3A0519"] }}
+                                <motion.div animate={{ color: ["#3b82f6", "#493D9E", "#4DA1A9", "#3A0519"] }}
                                     transition={{
                                         duration: 6,
                                         repeat: Infinity,
                                         repeatType: "loop",
                                     }}>
-                                    <h1 className='text-2xl plus-jakarta-sans-500 font-bold'>Want to support dev careers?</h1>
+                                    <h1 className='text-2xl h-23 plus-jakarta-sans-500 font-bold'><Typewriter
+                                        words={['Want to support dev careers?', ' Allow users to start a new discussion', 'Users can comment on posts or articles.', ' Profile created on signup']}
+                                        loop={5}
+                                        cursor
+                                        cursorStyle="|"
+                                        typeSpeed={70}
+                                        deleteSpeed={50}
+                                        delaySpeed={1000}
+                                    /></h1>
                                     <p>Lets Start !</p>
                                 </motion.div>
                             )
@@ -48,19 +58,23 @@ const Home = () => {
 
                 </div>
                 <div className="divider"></div>
-                <div className='flex flex-col'>
-                    <h1>Menu</h1>
-                    <NavLink className='font-bold btn text-start' to={'/'}>Home</NavLink>
-                    <NavLink className='font-bold btn text-start'>All Articles</NavLink>
-                    <NavLink className='font-bold btn text-start'>My Articles</NavLink>
-                    <NavLink className='font-bold btn text-start'>Post Article</NavLink>
-                    <NavLink className='font-bold btn text-start'>About Us</NavLink>
+                <div className='h-screen'>
+                    <h1 className='my-5'>Menu</h1>
+                    <div className='flex flex-col space-y-5'>
+                       <div>
+                         <NavLink className='border-2 border-base-200 py-2 font-bold plus-jakarta-sans-500' to={'/'}>Home</NavLink>
+                       </div>
+                        <NavLink className='border-2 border-base-200 py-2 font-bold plus-jakarta-sans-500'>All Articles</NavLink>
+                        <NavLink className='border-2 border-base-200 py-2 font-bold plus-jakarta-sans-500'>My Articles</NavLink>
+                        <NavLink className='border-2 border-base-200 py-2 font-bold plus-jakarta-sans-500'>Post Article</NavLink>
+                        <NavLink className='border-2 border-base-200 py-2 font-bold plus-jakarta-sans-500'>About Us</NavLink>
+                    </div>
                 </div>
             </aside>
 
             {/* Main Content */}
             <main className="flex-1 p-2">
-                <Banner></Banner>
+
             </main>
         </div>
     );

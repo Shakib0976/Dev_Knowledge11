@@ -161,7 +161,7 @@ const Navbar = () => {
                         <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-12 rounded-full content-center">
                                 {user?.photoURL ? (
-                                    <img src={user.photoURL} alt="User Avatar" />
+                                    <img src={user?.photoURL} alt="User Avatar" />
                                 ) : (
                                     <RxAvatar className="w-full h-full text-2xl" />
                                 )}
@@ -178,9 +178,11 @@ const Navbar = () => {
                         </ul>
                     </div>
                 ) : (
-                    <div className="space-x-5 mx-4 flex">
-                        <Link to={'/login'} className="btn ">Login</Link>
-                        <Link to={'/register'} className="btn  text-white bg-black">SignUp</Link>
+                    <div className="md:space-x-5  flex">
+                        <Link to={'/login'} className="btn btn-primary ">Login</Link>
+                        <div className='hidden md:block'>
+                            <Link to={'/register'} className="btn  text-white bg-black">SignUp</Link>
+                        </div>
                     </div>
                 )}
             </div>
