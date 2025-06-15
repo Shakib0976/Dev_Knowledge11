@@ -89,7 +89,7 @@ const RootLayouts = () => {
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
-                                    <TbView360 size={20} /><NavLink className=' font-bold plus-jakarta-sans-500'>View All Articles</NavLink>
+                                    <TbView360 size={20} /><NavLink to={'/allArticle'} className=' font-bold plus-jakarta-sans-500'>View All Articles</NavLink>
                                 </div></span>
                             </a>
 
@@ -101,7 +101,7 @@ const RootLayouts = () => {
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
-                                    <GrUserManager size={20} /><NavLink className=' font-bold plus-jakarta-sans-500'>My Articles</NavLink>
+                                    <GrUserManager size={20} /><NavLink to={'/article'} className=' font-bold plus-jakarta-sans-500'>My Articles</NavLink>
                                 </div></span>
                             </a>
 
@@ -112,7 +112,7 @@ const RootLayouts = () => {
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
-                                    <TfiWrite size={20} /> <NavLink className='font-bold plus-jakarta-sans-500'>Post Article</NavLink>
+                                    <TfiWrite size={20} /> <NavLink to={'/post'} className='font-bold plus-jakarta-sans-500'>Post Article</NavLink>
                                 </div></span>
                             </a>
 
@@ -124,7 +124,7 @@ const RootLayouts = () => {
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
-                                    <FcAbout size={20} /> <NavLink className=' font-bold plus-jakarta-sans-500'>About Us</NavLink>
+                                    <FcAbout size={20} /> <NavLink to={'/about'} className=' font-bold plus-jakarta-sans-500'>About Us</NavLink>
                                 </div></span>
                             </a>
                         </div>

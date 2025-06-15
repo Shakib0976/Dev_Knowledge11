@@ -55,10 +55,10 @@ const Navbar = () => {
 
     const links = <>
         <NavLink className='font-bold plus-jakarta-sans-500' to={'/'}>Home</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500' >All Articles</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500'>My Articles</NavLink>
+        <NavLink className='font-bold plus-jakarta-sans-500' to={'/allArticle'} >All Articles</NavLink>
+        <NavLink className='font-bold plus-jakarta-sans-500' to={'/article'}>My Articles</NavLink>
         <NavLink className='font-bold plus-jakarta-sans-500' to={'/post'}>Post Article</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500'>About Us</NavLink>
+        <NavLink className='font-bold plus-jakarta-sans-500' to={'/about'}>About Us</NavLink>
 
     </>
     return (
