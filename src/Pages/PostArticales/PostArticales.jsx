@@ -1,8 +1,27 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { RxAvatar } from 'react-icons/rx';
+import { Link } from 'react-router';
 
 const PostArticales = () => {
+
+    const handlePostArticles = e => {
+        e.preventDefault()
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+
+        // process tags 
+
+        const tagString = data.tags
+        const tagSpace = tagString.split(',');
+        const tagsNoSpace = tagSpace.map(req => req.trim());
+        data.tags = tagsNoSpace;
+        console.log(data);
+
+    }
 
     const { user } = use(AuthContext)
     return (
@@ -10,7 +29,7 @@ const PostArticales = () => {
             <h1 className='text-center space-grotesk-500 text-2xl md:text-4xl font-semibold'>Post New Article </h1>
             <p className='text-center space-grotesk-500 py-2 text-xl'>Share your knowledge with the community</p>
             <div className='py-10 bg-blue-100 max-w-2xl  mt-10 mb-25  p-6 justify-center items-center mx-auto'>
-                <form action="">
+                <form onSubmit={handlePostArticles}>
                     <div className='md:flex items-center justify-center  space-x-3'>
                         <fieldset className="fieldset w-full my-1">
                             <legend className=" fieldset-legend">Article Title *</legend>
@@ -90,7 +109,7 @@ const PostArticales = () => {
                     </div>
 
                     <div className='flex justify-center space-x-4'>
-                        <button class="flex items-center justify-center gap-2  w-full py-2 rounded-xl  text-white font-semibold
+                        <button type='submit' class="flex items-center justify-center gap-2  w-full py-2 rounded-xl  text-white font-semibold
                         bg-gradient-to-r from-blue-600 to-purple-700
                         hover:from-blue-700 hover:to-purple-800
                         transition-all duration-300 ease-in-out
@@ -100,7 +119,7 @@ const PostArticales = () => {
                             </svg>
                             Publish Article
                         </button>
-                        <button className='btn '>Cancel</button>
+                        <Link to={'/'} className='btn '>Cancel</Link>
                     </div>
                 </form>
             </div>
