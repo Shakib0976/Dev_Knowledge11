@@ -4,25 +4,25 @@
 
 
 .bg-c1 {
-    background-image: linear-gradient(to right, #34e89e, #0f3443);
+  background-image: linear-gradient(to right, #34e89e, #0f3443);
 }
 
 .bg-c2 {
-    background-image: linear-gradient(to right, #360033, #0b8793);
+  background-image: linear-gradient(to right, #360033, #0b8793);
 }
 
 .bg-c3 {
-    background-image: linear-gradient(to right, #000428, #004e92);
+  background-image: linear-gradient(to right, #000428, #004e92);
 }
 
 
-.space-grotesk-500{
-    font-family: "Space Grotesk", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+.space-grotesk-500 {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.plus-jakarta-sans-500{
+.plus-jakarta-sans-500 {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -36,14 +36,14 @@
   --color-theme-primary-dark: #1c3c6f;
 }
 
-:root[data-theme='dark'] {
+/* :root[data-theme='dark'] {
   --color-background: #121212;
   --color-text: #ffffff;
   --color-theme-primary: #4e8fff;
   --color-theme-primary-light: #1c3c6f;
   --color-theme-primary-dark: #0e1e37;
-}
-
+} */
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
   background-color: var(--color-background);
@@ -51,3 +51,14 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+p {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

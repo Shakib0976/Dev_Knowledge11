@@ -7,24 +7,24 @@ import { AuthContext } from '../../Context/AuthContext';
 const Banner = () => {
     const loading = use(AuthContext);
     console.log(loading);
-    //    dark:from-gray-900 dark:to-gray-800
+   
     return (
-        <div className='h-[50vh] flex flex-col items-center justify-center bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] p-4 '>
-            <div class="badge badge-lg mb-8 bg-[#EAE0FF]">
+        <div className=' bg-cover     dark:from-gray-900 dark:to-gray-800 flex flex-col items-center justify-center bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] p-4 py-10 md:py-15 lg:py-20'>
+            <div class="badge badge-sm md:badge-lg text-sm md:mb-8 mb-4 bg-[#EAE0FF] dark:bg-[#2E1F47]">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2 2m-2-2m2 2l2 2M10 9v6m4-3H6m3-3h6m-3 6v6m3-3h-6m9-9v4m-2-2h4m5 16l2 2m-2-2m2 2l2 2M10 12h4m-2 0V8m0 4v4" />
                 </svg>
                 Welcome to the Knowledge Community
             </div>
-            <h1 class="text-5xl font-bold mb-6 text-center">
-                <span class="text-[#1A1A1A]">Share Your</span>
-                <span class="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] text-transparent bg-clip-text">Knowledge</span>
+            <h1 class="md:text-5xl text-3xl font-bold mb-2 md:mb-6 text-center">
+                <span >Share Your</span>
+                <span class="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] dark:bg-gradient-to-r dark:from-purple-600 dark:via-pink-500 dark:to-yellow-400 text-transparent bg-clip-text">Knowledge</span>
             </h1>
-            <p class="text-[#4A4A4A] text-lg text-center max-w-2xl mb-10">
+            <p class="text-[#4A4A4A] dark:text-gray-400 md:text-lg text-center max-w-2xl  mb-2 md:mb-10">
                 Join a vibrant community of learners and experts. Discover insights, share your expertise, and contribute to the collective wisdom of our platform.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <button class="btn border-none py-6 mt-1 text-white bg-gradient-to-r from-[#4B80F4] to-[#935BEF] hover:from-[#3a67d1] hover:to-[#7e47d1]">
+            <div class="flex flex-col sm:flex-row md:gap-4">
+                <button class="btn border-none md:py-6 mt-1 text-white bg-gradient-to-r from-[#4B80F4] to-[#935BEF] hover:from-[#3a67d1] hover:to-[#7e47d1]">
                     Explore Articles
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.5 12h-15m11.5-4l4 4-4 4" />
@@ -44,32 +44,3 @@ export default Banner;
 
 
 
-{/* <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] p-4">
-  <div class="badge badge-lg mb-8" style="background-color: #EAE0FF; color: #7A5BEF;">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2 2m-2-2m2 2l2 2M10 9v6m4-3H6m3-3h6m-3 6v6m3-3h-6m9-9v4m-2-2h4m5 16l2 2m-2-2m2 2l2 2M10 12h4m-2 0V8m0 4v4" />
-    </svg>
-    Welcome to the Knowledge Community
-  </div>
-
-  <h1 class="text-5xl font-bold mb-6 text-center">
-    <span class="text-[#1A1A1A]">Share Your</span>
-    <span class="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] text-transparent bg-clip-text">Knowledge</span>
-  </h1>
-
-  <p class="text-[#4A4A4A] text-lg text-center max-w-2xl mb-10">
-    Join a vibrant community of learners and experts. Discover insights, share your expertise, and contribute to the collective wisdom of our platform.
-  </p>
-
-  <div class="flex flex-col sm:flex-row gap-4">
-    <button class="btn border-none text-white bg-gradient-to-r from-[#4B80F4] to-[#935BEF] hover:from-[#3a67d1] hover:to-[#7e47d1]">
-      Explore Articles
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17.5 12h-15m11.5-4l4 4-4 4" />
-      </svg>
-    </button>
-    <button class="btn btn-outline border-[#C8A2FF] text-[#7E5BEF] hover:bg-[#F1E8FF] hover:border-[#7E5BEF]">
-      Share Knowledge
-    </button>
-  </div>
-</div> */}

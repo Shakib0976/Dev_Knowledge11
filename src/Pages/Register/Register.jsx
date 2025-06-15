@@ -97,7 +97,7 @@ const Register = () => {
                 <h1 className='space-grotesk-500 text-xl md:text-2xl lg:text-4xl font-bold text-center mt-4'>Sign Up your account</h1>
                 <p className='text-gray-500 space-grotesk-500 font-bold text-center m-2 mb-4'>Please enter your details to sign Up.</p>
             </div>
-            <div className="card bg-base-100 mx-auto border border-gray-300 w-11/12  md:w-11/18 lg:w-11/28 shrink-0 shadow-2xl">
+            <div className="card dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 bg-base-100 mx-auto border border-gray-300 w-11/12  md:w-11/18 lg:w-11/28 shrink-0 shadow-2xl">
                 <div className="card-body">
                     <form onSubmit={handleCreateUser} className="fieldset">
                         {/* name */}
