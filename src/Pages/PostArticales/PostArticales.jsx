@@ -2,6 +2,8 @@ import React, { use } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { RxAvatar } from 'react-icons/rx';
 import { Link } from 'react-router';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const PostArticales = () => {
 
@@ -20,6 +22,23 @@ const PostArticales = () => {
         const tagsNoSpace = tagSpace.map(req => req.trim());
         data.tags = tagsNoSpace;
         console.log(data);
+
+        axios.post('http://localhost:3000/allTask', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your job has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
 
     }
 

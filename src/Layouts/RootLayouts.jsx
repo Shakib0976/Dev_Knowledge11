@@ -42,7 +42,7 @@ const RootLayouts = () => {
                                     </div>
 
                                 ) : (
-                                    
+
                                     <motion.div animate={{ color: ["#3b82f6", "#493D9E", "#4DA1A9", "#3A0519"] }}
                                         transition={{
                                             duration: 6,
@@ -72,61 +72,61 @@ const RootLayouts = () => {
                         <h1 className='mt-5 font-bold text-xl'>Menu</h1>
                         <div className='flex flex-col space-y-2'>
                             {/* Home button */}
-                            <a href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
+                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
                                 <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                                 <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
                                     <FaHome size={20} /><NavLink className=' font-bold plus-jakarta-sans-500' to={'/'}>Home</NavLink>
                                 </div></span>
-                            </a>
+                            </div>
 
                             {/* view ALL articales  */}
-                            <a href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
+                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
                                 <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                                 <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
                                     <TbView360 size={20} /><NavLink to={'/allArticle'} className=' font-bold plus-jakarta-sans-500'>View All Articles</NavLink>
                                 </div></span>
-                            </a>
+                            </div>
 
                             {/* my articales */}
 
-                            <a href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
+                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
                                 <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                                 <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
                                     <GrUserManager size={20} /><NavLink to={'/article'} className=' font-bold plus-jakarta-sans-500'>My Articles</NavLink>
                                 </div></span>
-                            </a>
+                            </div>
 
                             {/* post artical */}
-                            <a href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
+                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
                                 <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                                 <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
                                     <TfiWrite size={20} /> <NavLink to={'/post'} className='font-bold plus-jakarta-sans-500'>Post Article</NavLink>
                                 </div></span>
-                            </a>
+                            </div>
 
                             {/* about */}
 
-                            <a href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
+                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
                                 <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br  opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                                 <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
                                     <FcAbout size={20} /> <NavLink to={'/about'} className=' font-bold plus-jakarta-sans-500'>About Us</NavLink>
                                 </div></span>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </aside>

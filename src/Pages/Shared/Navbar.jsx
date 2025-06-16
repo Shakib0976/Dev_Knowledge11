@@ -1,4 +1,4 @@
-import React, { use, useContext, useEffect } from 'react';
+import React, { use, useContext} from 'react';
 import { Link, NavLink } from 'react-router';
 import { MdDeveloperMode } from "react-icons/md";
 import { ThemeContext } from '../Theme/ThemeProvider';
@@ -12,12 +12,7 @@ import { auth } from '../../Firebase/Firebase.config';
 const Navbar = () => {
     const { themeColor, toggleTheme } = useContext(ThemeContext);
     const { user, setUser } = use(AuthContext);
-    console.log(user?.photoURL);
-
-    useEffect(() => {
-        console.log("User from context:", user);
-    }, [user]);
-
+    
 
 
     const logoutUser = () => {
@@ -182,18 +177,18 @@ const Navbar = () => {
                     <div className="md:space-x-5  flex">
 
                        
-                        <a href="#_" class="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
-                            <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-                            <span class="relative"><Link to={'/login'}>Login</Link></span>
-                        </a>
+                        <div className="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
+                            <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                            <span className="relative"><Link to={'/login'}>Login</Link></span>
+                        </div>
                         <div className='hidden md:block'>
-                            <a href="#_" class="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block">
-                                <span class="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
-                                <span class="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-                                <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
-                                <span class="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
-                                <span class="relative"> <Link to={'/register'}>SignUp</Link></span>
-                            </a>
+                            <div  className="px-5 py-2.5 relative rounded group font-medium text-white font-medium inline-block">
+                                <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
+                                <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
+                                <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
+                                <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
+                                <span className="relative"> <Link to={'/register'}>SignUp</Link></span>
+                            </div>
 
                         </div>
                     </div>
