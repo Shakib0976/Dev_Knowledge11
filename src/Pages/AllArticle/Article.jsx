@@ -79,7 +79,7 @@ const Article = () => {
                         <textarea className="textarea w-[100%]" placeholder="Write Comment...."></textarea>
                     </div>
 
-                    <button className='btn ml-20 m mt-2 btn-primary flex'> <LuSend /> Post Comment</button>
+                    <button className='btn ml-22  -mt-2 btn-primary flex'> <LuSend /> Post Comment</button>
 
                 </div>
             </div>

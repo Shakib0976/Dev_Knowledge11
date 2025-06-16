@@ -23,7 +23,7 @@ const RootLayouts = () => {
 
             {/* aside */}
             <div className='flex'>
-                <aside className="w-64 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 m-1 hidden lg:block  shadow-xl border-base-100 p-4">
+                <aside className="w-64 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 m-1 hidden shadow-xl border-base-100 p-4">
                     <div className="flex mb-4 h-15">
                         <div>
                             {user?.photoURL ? (

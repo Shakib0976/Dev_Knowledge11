@@ -19,7 +19,7 @@ const AllArticle = () => {
 
 
     return (
-        <div className=''>
+        <div className='w-11/12 mx-auto'>
             <h1 className='text-center text-2xl mt-10 mb-2 md:text-4xl'>All Articles</h1>
             <p className='mb-10 text-center'>Explore our collection of knowledge and insights</p>
             <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 space-x-5 space-y-5'>
