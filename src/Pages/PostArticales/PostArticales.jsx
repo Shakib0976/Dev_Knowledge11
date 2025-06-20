@@ -56,7 +56,7 @@ const PostArticales = () => {
                         </fieldset>
                         <div>
                             <label className="block  font-medium mb-1 my-2 space-grotesk-500">Category</label>
-                            <select name='actegory' className="w-70 bg-base-100 px-4 py-2 border text-gray-500 rounded-md ">
+                            <select name='category' className="w-70 bg-base-100 px-4 py-2 border text-gray-500 rounded-md ">
                                 <option >Select a category</option>
                                 <option>Development</option>
                                 <option>Marketing</option>
