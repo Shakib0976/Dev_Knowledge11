@@ -7,6 +7,9 @@ import Swal from 'sweetalert2';
 
 const PostArticales = () => {
 
+    const { user } = use(AuthContext)
+
+
     const handlePostArticles = e => {
         e.preventDefault()
 
@@ -21,6 +24,8 @@ const PostArticales = () => {
         const tagSpace = tagString.split(',');
         const tagsNoSpace = tagSpace.map(req => req.trim());
         data.tags = tagsNoSpace;
+        data.likeBy = [];
+        data.Author_Photo = user?.photoURL
         console.log(data);
 
         axios.post('http://localhost:3000/allTask', data)
@@ -42,12 +47,12 @@ const PostArticales = () => {
 
     }
 
-    const { user } = use(AuthContext)
+
     return (
         <div className=' py-15 mx-auto w-11/12'>
             <h1 className='text-center space-grotesk-500 text-2xl md:text-4xl font-semibold'>Post New Article </h1>
             <p className='text-center space-grotesk-500 py-2 text-xl'>Share your knowledge with the community</p>
-            <div className='py-10 bg-blue-100 max-w-2xl  mt-10 mb-25  p-6 justify-center items-center mx-auto'>
+            <div className='py-10  dark:bg-gray-800  bg-blue-100 max-w-2xl  mt-10 mb-25  p-6 justify-center items-center mx-auto'>
                 <form onSubmit={handlePostArticles}>
                     <div className='md:flex items-center justify-center  space-x-3'>
                         <fieldset className="fieldset w-full my-1">

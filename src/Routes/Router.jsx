@@ -11,6 +11,9 @@ import AllArticle from "../Pages/AllArticle/AllArticle";
 import Article from "../Pages/AllArticle/Article";
 import MyArticle from "../Pages/MyArticle/MyArticle";
 import About from "../Pages/About/About";
+import PrivateRouter from "./PrivateRouter";
+import { Suspense } from "react";
+import Loader from "../Layouts/Loader";
 
 
 
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
 
       {
         path: '/post',
-        Component: PostArticales
+        element: <PrivateRouter><PostArticales></PostArticales></PrivateRouter>
       },
       {
         path: '/allArticle',
@@ -45,12 +48,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/allArticle/:id',
-        Component: Article,
+        element: <Suspense fallback={Loader}>
+          <Article></Article>
+        </Suspense>,
         loader: ({ params }) => fetch(`http://localhost:3000/allTask/${params.id}`)
       },
       {
         path: '/article',
-        Component: MyArticle
+        element: <PrivateRouter><MyArticle></MyArticle></PrivateRouter>
       },
       {
         path: '/about',
