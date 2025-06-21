@@ -27,8 +27,9 @@ const LatestArticle = () => {
                         <div className="card-body rounded-xl dark:text-white text-black">
                             <img className='w-full h-48 object-cover rounded-xl' src={article.url} alt="" />
 
-                            <h2 className="card-title dark:text-white text-black">{article.article
+                            <h2 className="card-title dark:text-white text-black">Title :  {article.article
                             }</h2>
+                            <h1>Expart : {article.category}</h1>
                             <div className='flex justify-between mt-5'>
                                 <p className='dark:text-white text-black card-title'>{article.name}</p>
                                 <p className='dark:text-white text-black'>Date: {article.date}</p>

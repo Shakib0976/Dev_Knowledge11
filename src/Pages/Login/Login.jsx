@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -20,12 +20,13 @@ const Login = () => {
         setLoading(true);
         googleSignIn()
             .then((result) => {
+                toast.success('Successfully login')
                 navigate(locations?.state || '/', {
                     state: { toastMessage: 'Login successful!' }
                 });
                 const user = result.user;
                 setUser(user);
-                toast.success('Successfully login')
+                
 
             }).catch((error) => {
 
@@ -47,12 +48,12 @@ const Login = () => {
             .then((result) => {
                 const user = (result.user);
                 setUser(user)
-                // toast.success('Success full Login');
+                toast.success('Successfully Login')
                 navigate(locations?.state || '/', {
                     state: { toastMessage: 'Login successful!' }
                 });
 
-                toast.success('Successfully Login')
+
 
             })
             .catch((error) => {

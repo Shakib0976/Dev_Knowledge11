@@ -36,12 +36,13 @@ const Register = () => {
 
             createUser(email, password)
                 .then((result) => {
+                    toast.success('Successfully Signin')
                     navigate(locations?.state || '/', {
                         state: { toastMessage: 'Login successful!' }
                     });
                     const user = (result.user);
 
-                    toast.success('Successfully Signin')
+
 
                     updateUser({ displayName: name, photoURL: photo })
                         .then(() => {
@@ -74,12 +75,13 @@ const Register = () => {
         setLoading(true)
         googleSignIn()
             .then((result) => {
+                toast.success('Successfully Signin')
                 navigate(locations?.state || '/', {
                     state: { toastMessage: 'Login successful!' }
                 });
                 const user = result.user;
                 setUser(user);
-                toast.success('Successfully Signin')
+
 
             }).catch((error) => {
 
