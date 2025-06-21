@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import { motion } from "framer-motion"
 
 const LatestArticle = () => {
     const [articles, setArticles] = useState([]);
@@ -20,9 +21,17 @@ const LatestArticle = () => {
         <div className='w-11/12 mx-auto my-20'>
             <h1 className='text-4xl font-bold text-center mb-4'>Featured Articles</h1>
             <p className='text-xl text-center mb-8'>Discover the latest insights from our community of experts</p>
-            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 space-x-5 space-y-5 '>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-20  mt-10 mb-10'>
                 {
-                    articles.map(article => <div key={article._id} className="card  bg-cover     dark:from-gray-800 dark:to-gray-700  bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] image-full w-[95%] shadow-sm">
+                    articles.map(article => <motion.div
+
+                        whileHover={{
+                            scale: 1.05,
+                            boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.15)"
+                        }}
+                        transition={{ duration: 0.3 }}
+
+                        key={article._id} className="card  bg-cover     dark:from-gray-800 dark:to-gray-700  bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] image-full w-[95%] shadow-sm">
 
                         <div className="card-body rounded-xl dark:text-white text-black">
                             <img className='w-full h-48 object-cover rounded-xl' src={article.url} alt="" />
@@ -38,7 +47,7 @@ const LatestArticle = () => {
                                 <Link to={`/allArticle/${article._id}`} className="btn btn-primary">Read More</Link>
                             </div>
                         </div>
-                    </div>)
+                    </motion.div>)
                 }
             </div>
         </div>

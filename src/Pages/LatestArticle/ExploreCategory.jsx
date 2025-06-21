@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { motion } from "framer-motion"
 
 const ExploreCategory = () => {
 
@@ -18,7 +19,10 @@ const ExploreCategory = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    categories.map(category => <div className="card bg-base-200 w-96 shadow-sm">
+                    categories.map(category => <motion.div
+                        whileHover={{ scale: 1.05, y: -5 }}
+                        transition={{ type: "spring", stiffness: 250 }}
+                         className="card bg-base-200 w-96 shadow-sm">
                         <figure className="px-10 pt-10">
                             <img
                                 src={category?.img}
@@ -35,7 +39,7 @@ const ExploreCategory = () => {
                                 </Link>
                             </div>
                         </div>
-                    </div>)
+                    </motion.div>)
                 }
             </div>
         </div>
