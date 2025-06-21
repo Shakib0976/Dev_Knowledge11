@@ -18,7 +18,7 @@ const LatestArticle = () => {
     }, []);
     return (
         <div className='w-11/12 mx-auto my-20'>
-            <h1 className='text-4xl font-bold text-center mb-2'>Featured Articles</h1>
+            <h1 className='text-4xl font-bold text-center mb-4'>Featured Articles</h1>
             <p className='text-xl text-center mb-8'>Discover the latest insights from our community of experts</p>
             <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 space-x-5 space-y-5 '>
                 {

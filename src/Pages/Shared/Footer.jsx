@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Footer = () => {
     return (
@@ -25,7 +25,7 @@ const Footer = () => {
 
                     </div>
                 </div>
-               
+
 
 
 
@@ -41,9 +41,14 @@ const Footer = () => {
                 <div className='mt-3 md:mt-0'>
                     <h1 className='font-bold text-2xl mb-5'>Follow Us</h1>
                     <div className='mt-2 flex  space-x-3'>
-                        <img className='w-10' src="https://i.ibb.co/p6BK8vNq/communication.png" alt="" />
-                        <img className='w-10' src="https://i.ibb.co/XZKPP3MX/twitter.png" alt="" />
-                        <img className='w-10' src="https://i.ibb.co/N2pJg8NV/linkedin.png" alt="" />
+                        <Link to={'https://www.linkedin.com/'} ><img className='w-10' src="https://i.ibb.co/N2pJg8NV/linkedin.png" alt="" /></Link>
+                        <Link to={'https://www.facebook.com/'} > <img className='w-10' src="https://i.ibb.co/p6BK8vNq/communication.png" alt="" /></Link>
+                        <Link to={'https://x.com/?lang=en'} >  <img className='w-10' src="https://i.ibb.co/XZKPP3MX/twitter.png" alt="" /></Link>
+
+
+
+
+
                     </div>
                 </div>
             </div>
