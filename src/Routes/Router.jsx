@@ -14,6 +14,7 @@ import About from "../Pages/About/About";
 import PrivateRouter from "./PrivateRouter";
 import { Suspense } from "react";
 import Loader from "../Layouts/Loader";
+import CategoryArticle from "../Pages/MyArticle/CategoryArticle";
 
 
 
@@ -60,6 +61,13 @@ const router = createBrowserRouter([
       {
         path: '/about',
         Component: About
+      },
+      {
+        path: 'category/:category',
+        element: <Suspense fallback={Loader}>
+          <CategoryArticle></CategoryArticle>
+        </Suspense>,
+        loader: ({ params }) => fetch(`http://localhost:3000/category/${params.category}`)
       }
     ]
   },
