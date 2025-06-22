@@ -1,13 +1,23 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Typewriter } from 'react-simple-typewriter';
 import { AuthContext } from '../../Context/AuthContext';
 import { Link } from 'react-router';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Banner = () => {
     const loading = use(AuthContext);
     console.log(loading);
+
+
+    useEffect(() => {
+            AOS.init({
+                duration: 1000, 
+                once: true,   
+            });
+        }, []);
    
     return (
         <div className=' bg-cover     dark:from-gray-900 dark:to-gray-800 flex flex-col items-center justify-center bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] p-4 py-10 md:py-15 lg:py-20'>
@@ -17,7 +27,7 @@ const Banner = () => {
                 </svg>
                 Welcome to the Knowledge Community
             </div>
-            <h1 class="md:text-6xl text-3xl font-bold mb-2 md:mb-6 text-center">
+            <h1 data-aos="fade-down" data-aos-delay="100" class="md:text-6xl text-3xl font-bold mb-2 md:mb-6 text-center">
                 <span >Share Your</span>
                 <span class="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] dark:bg-gradient-to-r dark:from-purple-600 dark:via-pink-500 dark:to-yellow-400 text-transparent bg-clip-text">Knowledge</span>
             </h1>

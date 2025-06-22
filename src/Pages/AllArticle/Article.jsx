@@ -17,7 +17,7 @@ const Article = () => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/comment/${taskId}`)
+        axios.get(`https://dev-talks-11-server.vercel.app/comment/${taskId}`)
             .then(res => {
                 console.log(res.data);
                 setComments(res.data);
@@ -43,7 +43,7 @@ const Article = () => {
         console.log(commentData);
 
 
-        axios.post('http://localhost:3000/comment', commentData)
+        axios.post('https://dev-talks-11-server.vercel.app/comment', commentData)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -93,7 +93,7 @@ const Article = () => {
 
         alert('like success')
 
-        axios.patch(`http://localhost:3000/like/${task._id}`, { email: user?.email })
+        axios.patch(`https://dev-talks-11-server.vercel.app/like/${task._id}`, { email: user?.email })
             .then(data => {
                 console.log(data.data);
                 const isLiked = data?.data?.liked;

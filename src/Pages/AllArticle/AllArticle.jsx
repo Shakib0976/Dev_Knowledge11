@@ -7,7 +7,7 @@ const AllArticle = () => {
     const [tasks, setTasks] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3000/allTask')
+        axios.get('https://dev-talks-11-server.vercel.app/allTask')
             .then(res => {
                 setTasks(res.data);
                 console.log(res.data);
@@ -25,7 +25,7 @@ const AllArticle = () => {
         console.log(category);
 
         if (category === "All Category") {
-            return axios.get('http://localhost:3000/allTask')
+            return axios.get('https://dev-talks-11-server.vercel.app/allTask')
                 .then(res => {
                     setTasks(res.data);
                     console.log(res.data);
@@ -35,7 +35,7 @@ const AllArticle = () => {
                 })
         }
         else {
-            return axios.get(`http://localhost:3000/category/${category}`)
+            return axios.get(`https://dev-talks-11-server.vercel.app/category/${category}`)
                 .then(res => {
 
                     setTasks(res.data);

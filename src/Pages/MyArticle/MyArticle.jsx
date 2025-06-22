@@ -26,7 +26,7 @@ const MyArticle = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/allTask/email/${user?.email}`, {
+        fetch(`https://dev-talks-11-server.vercel.app/allTask/email/${user?.email}`, {
 
             headers: {
                 authorization: `Bearer ${user?.accessToken}`
@@ -62,7 +62,7 @@ const MyArticle = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:3000/allTask/${id}`)
+                axios.delete(`https://dev-talks-11-server.vercel.app/allTask/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             const remainArticle = article.filter(art => art._id !== id);
@@ -98,7 +98,7 @@ const MyArticle = () => {
 
         console.log(' this is selected id', articleId);
 
-        fetch(`http://localhost:3000/allTask/${articleId}`, {
+        fetch(`https://dev-talks-11-server.vercel.app/allTask/${articleId}`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'

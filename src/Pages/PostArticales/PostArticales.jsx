@@ -9,6 +9,8 @@ const PostArticales = () => {
 
     const { user } = use(AuthContext)
 
+    const token = localStorage.getItem('devtalksToken')
+
 
     const handlePostArticles = e => {
         e.preventDefault()
@@ -28,7 +30,11 @@ const PostArticales = () => {
         data.Author_Photo = user?.photoURL
         console.log(data);
 
-        axios.post('http://localhost:3000/allTask', data)
+        axios.post('https://dev-talks-11-server.vercel.app/allTask', data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

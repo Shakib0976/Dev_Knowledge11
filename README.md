@@ -1,12 +1,57 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Live URL
 
-Currently, two official plugins are available:
+ https://devknowledge-5ed93.web.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Purpose
 
-## Expanding the ESLint configuration
+The goal of this project is to foster a collaborative academic environment where students can:
+- Share knowledge through articles
+- Discuss ideas through comments
+- Learn from peers and build a resource hub for various academic topics
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔑 Key Features
+
+- 1 Create, read, update, and delete (CRUD) articles
+- 2 Comment on articles for interactive discussions
+- 3 Firebase Authentication (Email/Password, Google Sign-in)
+- 4 Categorized knowledge-sharing by topic or subject
+- 5 Fully responsive design for mobile, tablet, and desktop
+- 6 Search and filter articles
+- 7 Secure user data and protected routes
+
+
+## 🛠 Tech Stack
+
+### Frontend:
+- **React.js**
+- **React Router**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Firebase Authentication**
+
+### Backend:
+- **Node.js**
+- **Express.js**
+- **MongoDB**
+- **JWT** 
+
+## 📦 NPM Packages Used
+
+### Frontend:
+- `react`
+- `react-dom`
+- `react-router-dom`
+- `tailwindcss`
+- `daisyui`
+- `axios`
+- `firebase`
+- `react-toastify`
+- `classnames`
+
+### Backend:
+- `express`
+- `mongoose`
+- `cors`
+- `dotenv`
+- `nodemon`

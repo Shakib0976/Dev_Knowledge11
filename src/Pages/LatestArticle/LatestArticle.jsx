@@ -8,7 +8,7 @@ const LatestArticle = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3000/article/latestArticle/letestDeadLine')
+        axios.get('https://dev-talks-11-server.vercel.app/article/latestArticle/letestDeadLine')
             .then(res => {
                 console.log(res.data);
                 setArticles(res.data);
@@ -19,9 +19,9 @@ const LatestArticle = () => {
     }, []);
     return (
         <div className='w-11/12 mx-auto my-20'>
-            <h1 className='text-4xl font-bold text-center mb-4'>Featured Articles</h1>
-            <p className='text-xl text-center mb-8'>Discover the latest insights from our community of experts</p>
-            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-20  mt-10 mb-10'>
+            <h1 className='md:text-4xl text-2xl font-bold text-center mb-2 md:mb-4'>Featured Articles</h1>
+            <p className='md:text-xl text-lg text-center md:mb-20'>Discover the latest insights from our community of experts</p>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 md:gap-10 gap-5 lg:gap-20  mt-10 mb-10'>
                 {
                     articles.map(article => <motion.div
 
@@ -38,7 +38,7 @@ const LatestArticle = () => {
 
                             <h2 className="card-title dark:text-white text-black">Title :  {article.article
                             }</h2>
-                            <h1>Expart : {article.category}</h1>
+                            <h1 className='text-gray-800 dark:text-gray-200'>Expart : {article.category}</h1>
                             <div className='flex justify-between mt-5'>
                                 <p className='dark:text-white text-black card-title'>{article.name}</p>
                                 <p className='dark:text-white text-black'>Date: {article.date}</p>

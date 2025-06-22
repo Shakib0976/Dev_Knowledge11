@@ -50,9 +50,9 @@ const router = createBrowserRouter([
       {
         path: '/allArticle/:id',
         element: <Suspense fallback={Loader}>
-          <Article></Article>
+          <PrivateRouter> <Article></Article></PrivateRouter>
         </Suspense>,
-        loader: ({ params }) => fetch(`http://localhost:3000/allTask/${params.id}`)
+        loader: ({ params }) => fetch(`https://dev-talks-11-server.vercel.app/allTask/${params.id}`)
       },
       {
         path: '/article',
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         element: <Suspense fallback={Loader}>
           <CategoryArticle></CategoryArticle>
         </Suspense>,
-        loader: ({ params }) => fetch(`http://localhost:3000/category/${params.category}`)
+        loader: ({ params }) => fetch(`https://dev-talks-11-server.vercel.app/category/${params.category}`)
       }
     ]
   },
