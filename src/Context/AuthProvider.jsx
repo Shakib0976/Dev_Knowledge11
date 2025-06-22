@@ -8,6 +8,8 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
 
+    console.log(user);
+
 
 
     const updateUser = (updateData) => {
@@ -59,7 +61,7 @@ const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         user,
-        setUser,     
+        setUser,
         updateUser,
         logInUser
 

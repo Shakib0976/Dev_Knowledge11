@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 const MyArticle = () => {
     const { user } = use(AuthContext)
 
+
     const [article, setArticle] = useState([]);
 
     const [articleId, setArticleId] = useState(null)
@@ -25,7 +26,12 @@ const MyArticle = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/allTask/email/${user?.email}`)
+        fetch(`http://localhost:3000/allTask/email/${user?.email}`, {
+
+            headers: {
+                authorization: `Bearer ${user?.accessToken}`
+            }
+        })
             .then(res => res.json())
             .then(result => {
                 console.log(result);
@@ -78,7 +84,7 @@ const MyArticle = () => {
 
 
     const updateArticle = e => {
-       
+
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries())

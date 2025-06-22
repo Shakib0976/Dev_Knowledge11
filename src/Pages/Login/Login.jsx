@@ -13,6 +13,7 @@ const Login = () => {
 
     const { setUser, googleSignIn, logInUser, setLoading } = use(AuthContext);
 
+
     const navigate = useNavigate();
 
 
@@ -21,12 +22,13 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 toast.success('Successfully login')
+                localStorage.setItem('devtalksToken', result?.user?.accessToken);
                 navigate(locations?.state || '/', {
                     state: { toastMessage: 'Login successful!' }
                 });
                 const user = result.user;
                 setUser(user);
-                
+
 
             }).catch((error) => {
 
@@ -48,6 +50,7 @@ const Login = () => {
             .then((result) => {
                 const user = (result.user);
                 setUser(user)
+                localStorage.setItem('devtalksToken', result?.user?.accessToken);
                 toast.success('Successfully Login')
                 navigate(locations?.state || '/', {
                     state: { toastMessage: 'Login successful!' }

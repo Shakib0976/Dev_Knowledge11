@@ -36,6 +36,7 @@ const Register = () => {
 
             createUser(email, password)
                 .then((result) => {
+                    localStorage.setItem('devtalksToken', result?.user?.accessToken);
                     toast.success('Successfully Signin')
                     navigate(locations?.state || '/', {
                         state: { toastMessage: 'Login successful!' }
@@ -76,6 +77,7 @@ const Register = () => {
         googleSignIn()
             .then((result) => {
                 toast.success('Successfully Signin')
+                localStorage.setItem('devtalksToken', result?.user?.accessToken);
                 navigate(locations?.state || '/', {
                     state: { toastMessage: 'Login successful!' }
                 });
