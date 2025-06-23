@@ -22,11 +22,11 @@ const ExploreCategory = () => {
                     categories.map(category => <motion.div
                         whileHover={{ scale: 1.05, y: -5 }}
                         transition={{ type: "spring", stiffness: 250 }}
-                         className="card bg-base-200 w-96 shadow-sm">
+                         className="card bg-base-200 w-full shadow-sm">
                         <figure className="px-10 pt-10">
                             <img
                                 src={category?.img}
-                                alt="Shoes"
+                                alt="category img"
                                 className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">

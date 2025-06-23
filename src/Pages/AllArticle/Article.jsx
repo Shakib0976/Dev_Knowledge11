@@ -8,6 +8,7 @@ import { LuSend } from 'react-icons/lu';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { AiFillLike } from 'react-icons/ai';
+import toast from 'react-hot-toast';
 
 
 const Article = () => {
@@ -89,14 +90,21 @@ const Article = () => {
 
 
     const handleLike = () => {
-        if (user?.email === task?.email) return alert('you can not like your own article');
+        if (user?.email === task?.email) return toast.error('you can not like your own article')
 
-        alert('like success')
+
 
         axios.patch(`https://dev-talks-11-server.vercel.app/like/${task._id}`, { email: user?.email })
             .then(data => {
                 console.log(data.data);
                 const isLiked = data?.data?.liked;
+
+                if (isLiked) {
+                    toast.success('like success')
+                }
+                else {
+                    toast.success('disLike Success')
+                }
 
                 // set like state
                 setLiked(isLiked)

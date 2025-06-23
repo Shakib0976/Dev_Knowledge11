@@ -9,7 +9,6 @@ const PostArticales = () => {
 
     const { user } = use(AuthContext)
 
-    const token = localStorage.getItem('devtalksToken')
 
 
     const handlePostArticles = e => {
@@ -32,7 +31,7 @@ const PostArticales = () => {
 
         axios.post('https://dev-talks-11-server.vercel.app/allTask', data, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${user?.accessToken}`
             }
         })
             .then(res => {
@@ -46,6 +45,7 @@ const PostArticales = () => {
                     });
                 }
                 console.log(res.data);
+                form.reset();
             })
             .catch(err => {
                 console.log(err);

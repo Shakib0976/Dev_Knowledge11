@@ -166,8 +166,8 @@ const Navbar = () => {
                         </div>
                         <ul className="mt-3 z-[1] p-2 border shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60">
                             <li>
-                                <Link className='text-sm font-semibold'>My Articles</Link>
-                                <Link className='text-sm font-semibold'>Post Articles</Link>
+                                <Link to={'/article'} className='text-sm font-semibold'>My Articles</Link>
+                                <Link to={'/post'} className='text-sm font-semibold'>Post Articles</Link>
                             </li>
                             <li>
                                 <button onClick={logoutUser} className="btn btn-primary mt-1">Log Out</button>
