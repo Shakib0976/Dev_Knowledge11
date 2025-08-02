@@ -18,12 +18,12 @@ const RootLayouts = () => {
 
     const { user } = use(AuthContext);
     return (
-        <div className='dark:bg-gray-900 '>
+        <div className='dark:bg-black '>
             <Navbar></Navbar>
 
             {/* aside */}
             <div className='flex'>
-                <aside className="w-64 h-screen sticky top-15 hidden md:block dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 m-1 shadow-xl border-base-100 p-4 overflow-y-auto">
+                <aside className="w-64 h-screen sticky top-15 hidden md:block dark:bg-gradient-to-r dark:from-black  m-1 shadow-xl border-base-100 p-4 overflow-y-auto">
 
                     <div className="flex mb-4 h-15">
                         <div>

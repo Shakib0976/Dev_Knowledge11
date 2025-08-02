@@ -80,3 +80,8 @@
         transform: translateX(200%)
     }
 }
+
+.bgG {
+    box-shadow: 20px;
+  box-shadow: 0 0 20px 0px #667eea, 0 0 40px 0px #764ba2;
+}
