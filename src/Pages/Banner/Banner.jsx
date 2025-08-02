@@ -35,7 +35,7 @@ const Banner = () => {
                 Join a vibrant community of learners and experts. Discover insights, share your expertise, and contribute to the collective wisdom of our platform.
             </p>
             <div class="flex flex-col sm:flex-row md:gap-4">
-                <Link to={'/allArticle'} class="btn border-none md:py-6 mt-1 text-white bg-gradient-to-r from-[#4B80F4] to-[#935BEF] hover:from-[#3a67d1] hover:to-[#7e47d1]">
+                <Link to={'/allArticle'} class="btn button border-none md:py-6 mt-1 text-white bg-gradient-to-r from-[#4B80F4] to-[#935BEF] hover:from-[#3a67d1] hover:to-[#7e47d1]">
                     Explore Articles
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.5 12h-15m11.5-4l4 4-4 4" />

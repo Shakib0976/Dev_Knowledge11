@@ -129,10 +129,13 @@ const Article = () => {
                 <div className="card-body rounded-xl dark:text-white text-black">
                     <img className='rounded-xl md:w-180 mx-auto' src={task.url} alt="" />
 
-                    <h2 className="card-title dark:text-white text-black">{task.actegory
+                    <h2 className="card-title dark:text-white text-black">Category:  {task.category
 
                     }</h2>
-                    <h1 className="card-title dark:text-white text-black">{task.article}</h1>
+                    <h1 className="card-title dark:text-white text-black">Title : {task.article}</h1>
+
+
+                    <h1 className="card-title text-sm dark:text-white text-gray-2000">Content: {task.content}</h1>
 
                     {/* tags */}
                     <h1>Tags :</h1>

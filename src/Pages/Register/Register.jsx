@@ -1,162 +1,138 @@
-import React, { use, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthContext';
+import loaderAnimation from '../../assets/loginL.json';
+import Lottie from 'lottie-react';
+import './Register.css';
 
 const Register = () => {
+    const { setUser, createUser, googleSignIn, updateUser, setLoading } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
 
-
-    const { setUser, createUser, googleSignIn, updateUser, setLoading } = use(AuthContext);
-
-    const locations = useLocation();
-    const [error, setError] = useState('')
-
-    const navigate = useNavigate()
-
-
-    const handleCreateUser = (e) => {
+    const handleCreateUser = async (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const photo = e.target.photo.value;
+        const { name, email, password, photo } = e.target;
 
-        if (password.length < 6) {
-            return setError('Password must be at least 6 characters long.');
-        } else if (!/[A-Z]/.test(password)) {
+        if (password.value.length < 6) {
+            return setError('Password must be at least 6 characters.');
+        }
+        if (!/[A-Z]/.test(password.value)) {
             return setError('Password must contain at least one uppercase letter.');
-        } else if (!/[a-z]/.test(password)) {
+        }
+        if (!/[a-z]/.test(password.value)) {
             return setError('Password must contain at least one lowercase letter.');
         }
-        else {
-            setError('');
 
-
-
-
-            createUser(email, password)
-                .then((result) => {
-                    localStorage.setItem('devtalksToken', result?.user?.accessToken);
-                    toast.success('Successfully Signin')
-                    navigate(locations?.state || '/', {
-                        state: { toastMessage: 'Login successful!' }
-                    });
-                    const user = (result.user);
-
-
-
-                    updateUser({ displayName: name, photoURL: photo })
-                        .then(() => {
-                            setUser({ ...user, displayName: name, photoURL: photo });
-
-                        })
-                        .catch((error) => {
-                            console.log(error);
-                            setUser(user);
-                        })
-
-
-                }
-                )
-
-                .catch((error) => {
-
-                    toast.error(error.message);
-                    setError('Account already created !')
-                })
-
-
+        try {
+            const result = await createUser(email.value, password.value);
+            const user = result.user;
+            localStorage.setItem('devtalksToken', user.accessToken);
+            await updateUser({ displayName: name.value, photoURL: photo.value });
+            setUser({ ...user, displayName: name.value, photoURL: photo.value });
+            toast.success('Successfully Signed Up');
+            navigate(location.state || '/', { state: { toastMessage: 'Login successful!' } });
+        } catch (err) {
+            console.error(err);
+            setError('Account already exists or invalid credentials.');
+            toast.error(err.message);
         }
+    };
 
+    const handleSigninGoogle = async () => {
+        try {
+            setLoading(true);
+            const result = await googleSignIn();
+            const user = result.user;
+            localStorage.setItem('devtalksToken', user.accessToken);
+            setUser(user);
+            toast.success('Signed in with Google');
+            navigate(location.state || '/', { state: { toastMessage: 'Login successful!' } });
+        } catch (err) {
+            console.error(err);
+            toast.error('Google sign-in failed.');
+        }
+    };
 
-    }
-
-
-    const handleSigninGoogle = () => {
-        setLoading(true)
-        googleSignIn()
-            .then((result) => {
-                toast.success('Successfully Signin')
-                localStorage.setItem('devtalksToken', result?.user?.accessToken);
-                navigate(locations?.state || '/', {
-                    state: { toastMessage: 'Login successful!' }
-                });
-                const user = result.user;
-                setUser(user);
-
-
-            }).catch((error) => {
-
-                const errorMessage = error.message;
-                console.log(errorMessage);
-                toast.error(errorMessage)
-            });
-
-
-    }
     return (
-        <div className=' flex flex-col py-15  justify-center items-center mx-3'>
+        <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center px-4 py-8 bg-gray-50 dark:bg-gray-900">
+            <div className="w-full flex flex-col md:w-1/2 mb-8 items-center justify-center md:mb-0 text-center">
 
-            <div>
-                <h1 className='space-grotesk-500 text-xl md:text-2xl lg:text-4xl font-bold text-center mt-4'>Sign Up your account</h1>
-                <p className='text-gray-500 space-grotesk-500 font-bold text-center m-2 mb-4'>Please enter your details to sign Up.</p>
+                <h1 className="text-3xl home-title lg:text-4xl font-bold text-gray-800 dark:text-white"> <span>Create Your Account</span></h1>
+                <p className="text-gray-500 mb-2 dark:text-gray-300 mt-2">Please enter your details to sign up.</p>
+                <Lottie animationData={loaderAnimation} loop={true} className="w-78 hidden lg:flex mt-5 h-78" />
             </div>
-            <div className="card dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 bg-base-100 mx-auto border border-gray-300 w-11/12  md:w-11/18 lg:w-11/28 shrink-0 shadow-2xl">
-                <div className="card-body">
-                    <form onSubmit={handleCreateUser} className="fieldset">
-                        {/* name */}
-                        <label className="font-bold text-sm label space-grotesk-500">Name</label>
-                        <input
-                            name='name'
-                            type="text"
-                            className="input  w-full"
-                            placeholder="enter your name here" />
-                        {/* email */}
-                        <label className="label font-bold text-sm space-grotesk-500">Email</label>
-                        <input
-                            required
-                            name='email'
-                            type="email"
-                            className="input w-full"
-                            placeholder="enter your Email here" />
-                        {/* photo-url */}
-                        <label className="label font-bold text-sm space-grotesk-500">Photo_url</label>
-                        <input
-                            name='photo'
-                            type="text"
-                            className="input w-full"
-                            placeholder="Photo_url" />
-                        {/* password */}
-                        <label className="label font-bold text-sm space-grotesk-500">Password</label>
-                        <input
-                            required
-                            name='password'
-                            type="password"
-                            className="input w-full"
-                            placeholder="Password" />
-                        {/* button */}
 
-                        <a href="#_" class="relative mt-4 inline-flex items-center justify-center  overflow-hidden font-mono font-medium tracking-tighter text-white bg-gray-800 rounded-lg group">
-                            <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-green-500 group-hover:w-full group-hover:h-full"></span>
-                            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-gray-700"></span>
-                            <span class="relative"> <button type='submit' className="font-bold text-2xl my-2">Sign up</button></span>
-                        </a>
-                        {/* <div className='text-center text-red-700 font-semibold'>{error}</div> */}
-                    </form>
+            <div className="w-full max-w-md p-8 rounded-3xl shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                <form onSubmit={handleCreateUser} className="space-y-4">
                     <div>
-                        <h1 className='text-red-500'>{error}</h1>
-                        <p className='text-center mb-1'>Already have an account?<span className='text-blue-700 ml-2'><Link to='/login'>Login</Link></span></p>
-                        <p className='font-bold text-gray-400 text-center'>Or, login with</p>
-
+                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter your name"
+                            className="input-field w-full"
+                            required
+                        />
                     </div>
-                    {/* google login button */}
 
-                    <button onClick={handleSigninGoogle} className="btn bg-white text-black border-[#e5e5e5] mt-1 hover:bg-gray-200">
-                        <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
-                        Signup with Google
+                    <div>
+                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            className="input-field w-full"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Photo URL</label>
+                        <input
+                            type="text"
+                            name="photo"
+                            placeholder="Enter photo URL"
+                            className="input-field w-full"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            className="input-field w-full"
+                            required
+                        />
+                    </div>
+
+                    {error && <p className="text-red-600 text-sm">{error}</p>}
+
+                    <button type="submit" className="w-full py-3 mt-2 font-semibold text-white bg-green-600 hover:bg-green-700 rounded-lg transition">
+                        Sign Up
                     </button>
+                </form>
 
-                </div>
+                <p className="text-center text-sm text-gray-600 dark:text-gray-300 mt-4">
+                    Already have an account?{' '}
+                    <Link to="/login" className="text-blue-600 hover:underline">
+                        Login
+                    </Link>
+                </p>
+
+                <div className="divider text-sm my-4 text-gray-400">or sign up with</div>
+
+                <button
+                    onClick={handleSigninGoogle}
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-white border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-sm font-medium transition"
+                >
+                    <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
+                    Sign up with Google
+                </button>
             </div>
         </div>
     );

@@ -67,7 +67,7 @@ const Login = () => {
 
     }
     return (
-        <div className=' flex flex-col py-15  justify-center items-center  mx-3  bg-cover' >
+        <div className=' flex  flex-col py-15  justify-center items-center  mx-3  bg-cover' >
             <div>
                 <p className='space-grotesk-500 text-gray-500 font-semibold text-center mt-4'>Welcome Back</p>
                 <h1 className='space-grotesk-500 text-xl md:text-2xl lg:text-4xl font-bold text-center mt-2'>Sign In your account</h1>

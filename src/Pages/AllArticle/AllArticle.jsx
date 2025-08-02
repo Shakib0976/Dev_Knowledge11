@@ -77,7 +77,7 @@ const AllArticle = () => {
 
                             <h2 className="card-title dark:text-white text-black">Title : {task.article
                             }</h2>
-                            <h1>Category : {task?.category}</h1>
+                            <h1 className='dark:text-white text-black'>Category : {task?.category}</h1>
                             <div className='flex justify-between mt-5'>
                                 <p className='dark:text-white text-black card-title'>{task.name}</p>
                                 <p className='dark:text-white text-black'>Date: {task.date}</p>
