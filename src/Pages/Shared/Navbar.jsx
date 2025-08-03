@@ -7,7 +7,8 @@ import { RxAvatar } from 'react-icons/rx';
 import Swal from 'sweetalert2';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../Firebase/Firebase.config';
-
+import { AiFillHome } from "react-icons/ai";
+import { ShiftingDropDown } from './DropDown';
 
 const Navbar = () => {
     const { themeColor, toggleTheme } = useContext(ThemeContext);
@@ -90,7 +91,7 @@ const Navbar = () => {
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             <div className='space-x-5 '>
-                                {links}
+                                <ShiftingDropDown />
                             </div>
                         </ul>
                     </div>
