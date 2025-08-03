@@ -5,6 +5,7 @@ import { AuthContext } from '../../Context/AuthContext';
 import loaderAnimation from '../../assets/loginL.json';
 import Lottie from 'lottie-react';
 import './Register.css';
+import { sendEmailVerification } from 'firebase/auth';
 
 const Register = () => {
     const { setUser, createUser, googleSignIn, updateUser, setLoading } = useContext(AuthContext);
@@ -31,6 +32,12 @@ const Register = () => {
             const user = result.user;
             localStorage.setItem('devtalksToken', user.accessToken);
             await updateUser({ displayName: name.value, photoURL: photo.value });
+
+            await sendEmailVerification(user)
+                .then(res => {
+                    console.log('email verification send ', res);
+                    toast.success('Verification email sent. Please check your inbox.');
+                })
             setUser({ ...user, displayName: name.value, photoURL: photo.value });
             toast.success('Successfully Signed Up');
             navigate(location.state || '/', { state: { toastMessage: 'Login successful!' } });
@@ -57,7 +64,7 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col  lg:flex-row items-center justify-center px-4 py-8 bg-gray-50 dark:bg-black ">
+        <div className="min-h-screen colorgp flex flex-col  lg:flex-row items-center justify-center px-4 py-8 bg-gray-50 dark:bg-black ">
             <div className="w-full flex flex-col md:w-1/2 mb-8 items-center justify-center md:mb-0 text-center">
 
                 <h1 className="text-3xl home-title lg:text-4xl font-bold text-gray-800 dark:text-white"> <span className='dark:text-white'>Create Your Account</span></h1>
@@ -65,7 +72,7 @@ const Register = () => {
                 <Lottie animationData={loaderAnimation} loop={true} className="w-78 hidden lg:flex mt-5 h-78" />
             </div>
 
-            <div className="w-full max-w-md p-8  rounded-2xl dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] bg-gradient-to-br  bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700">
+            <div className="w-full max-w-md p-8  rounded-2xl shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] bg-gradient-to-br  bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700">
                 <form onSubmit={handleCreateUser} className="space-y-2">
                     <div>
                         <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Name</label>

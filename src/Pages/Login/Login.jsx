@@ -77,7 +77,7 @@ const Login = () => {
                 <p className='text-gray-500 space-grotesk-500 font-bold text-center m-2 mb-6'>Please enter your details to sign in.</p>
                 <Lottie animationData={lottiData} loop={true} className="w-78 hidden lg:flex mt-5 h-78" />
             </div>
-            <div className="w-full max-w-md p-4 md:p-8 rounded-2xl dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] bg-gradient-to-br  bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700">
+            <div className="w-full max-w-md p-4 md:p-8 rounded-2xl shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] bg-gradient-to-br  bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700">
                 <div className="card-body">
                     <form onSubmit={handleLogin} className="fieldset">
                         {/* email */}

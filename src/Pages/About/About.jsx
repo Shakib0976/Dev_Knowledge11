@@ -1,5 +1,8 @@
 import React from 'react';
 import { MdOutlineRocketLaunch } from 'react-icons/md';
+import ExploreCategory from '../LatestArticle/ExploreCategory';
+import TopContributor from '../../Layouts/TopContributor';
+import Extra1 from '../../Layouts/Extra1';
 
 const About = () => {
     return (
@@ -83,6 +86,11 @@ const About = () => {
                     </div>
                 </div>
             </div>
+
+
+            <ExploreCategory></ExploreCategory>
+            <TopContributor></TopContributor>
+            <Extra1></Extra1>
         </div>
     );
 };

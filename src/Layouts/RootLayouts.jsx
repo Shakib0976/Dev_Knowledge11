@@ -18,12 +18,12 @@ const RootLayouts = () => {
 
     const { user } = use(AuthContext);
     return (
-        <div className='dark:bg-black '>
+        <div className='dark:bg-black colorgp'>
             <Navbar></Navbar>
 
             {/* aside */}
-            <div className='flex'>
-                <aside className="w-64 h-screen sticky top-15 hidden md:block dark:bg-gradient-to-r dark:from-black  m-1 shadow-xl border-base-100 p-4 overflow-y-auto">
+            <div className='flex flex-col md:flex-row'>
+                <aside className=" w-70 h-screen sticky dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] top-20 hidden lg:block dark:bg-gradient-to-r dark:from-black  m-1  border-base-100 p-4 overflow-y-auto">
 
                     <div className="flex mb-4 h-15">
                         <div>
@@ -38,29 +38,22 @@ const RootLayouts = () => {
                             {
                                 user?.displayName ? (
                                     <div>
-                                        <h1 className='text-lg plus-jakarta-sans-500 font-bold'>{user.displayName}</h1>
-                                        <img className='w-8' src="/src/assets/devLogo/verified.png" alt="" />
+                                        <h1 className='text-sm mt-1 plus-jakarta-sans-500 font-bold'>{user.displayName}</h1>
                                     </div>
 
                                 ) : (
 
-                                    <motion.div animate={{ color: ["#3b82f6", "#493D9E", "#4DA1A9", "#3A0519"] }}
-                                        transition={{
-                                            duration: 6,
-                                            repeat: Infinity,
-                                            repeatType: "loop",
-                                        }}>
-                                        <h1 className='text-2xl h-23 plus-jakarta-sans-500 font-bold'><Typewriter
-                                            words={['Frontend Developer', ' Backend Developer', 'Full-Stack Developer', ' Game Developer']}
-                                            loop={5}
-                                            cursor
-                                            cursorStyle="|"
-                                            typeSpeed={70}
-                                            deleteSpeed={50}
-                                            delaySpeed={1000}
-                                        /></h1>
-
-                                    </motion.div>
+                                    <div>
+                                        <h1 className='text-rotator text-black dark:text-white'>
+                                            We works for
+                                            <div class="dropping-texts">
+                                                <div>Developers</div>
+                                                <div>Designers</div>
+                                                <div>Coders</div>
+                                                <div>EVERYONE!</div>
+                                            </div>
+                                        </h1>
+                                    </div>
                                 )
                             }
 
@@ -90,7 +83,7 @@ const RootLayouts = () => {
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span class="relative"><div className='flex items-center space-x-2'>
-                                    <TbView360 size={20} /><NavLink to={'/allArticle'} className=' font-bold plus-jakarta-sans-500'>View All Articles</NavLink>
+                                    <TbView360 size={20} /><NavLink to={'/allArticle'} className=' font-bold plus-jakarta-sans-500'>All Articles</NavLink>
                                 </div></span>
                             </div>
 
@@ -131,10 +124,12 @@ const RootLayouts = () => {
                         </div>
                     </div>
                 </aside>
-                {/* Main Content */}
-                <main className="flex-1 p-2">
+
+
+                <main className="flex-1/3 p-2">
                     <Outlet></Outlet>
                 </main>
+
             </div>
 
 
