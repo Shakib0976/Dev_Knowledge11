@@ -19,9 +19,7 @@ const LatestArticle = () => {
     }, []);
     return (
         <div className='w-11/12 mx-auto my-20'>
-            <h1 className='md:text-4xl text-2xl font-bold text-center mb-2 md:mb-4'>Featured Articles</h1>
-            <p className='md:text-xl text-lg text-center md:mb-20'>Discover the latest insights from our community of experts</p>
-            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 md:gap-10 gap-5 lg:gap-20  mt-10 mb-10'>
+            <div className='grid grid-cols-1  md:gap-10 gap-5 lg:gap-20  mt-10 mb-10'>
                 {
                     articles.map(article => <motion.div
 

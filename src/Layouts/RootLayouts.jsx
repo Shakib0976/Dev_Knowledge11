@@ -11,8 +11,9 @@ import { FaHome } from 'react-icons/fa';
 import { TbView360 } from 'react-icons/tb';
 import { GrUserManager } from 'react-icons/gr';
 import { TfiWrite } from 'react-icons/tfi';
-import { FcAbout } from 'react-icons/fc';
+import { FcAbout, FcBusinessman, FcComboChart } from 'react-icons/fc';
 import { AuthContext } from '../Context/AuthContext';
+
 
 const RootLayouts = () => {
 
@@ -22,7 +23,7 @@ const RootLayouts = () => {
             <Navbar></Navbar>
 
             {/* aside */}
-            <div className='flex flex-col md:flex-row'>
+            <div className='flex flex-col md:flex-row '>
                 <aside className=" w-70 h-screen sticky dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] top-20 hidden lg:block dark:bg-gradient-to-r dark:from-black  m-1  border-base-100 p-4 overflow-y-auto">
 
                     <div className="flex mb-4 h-15">
@@ -62,71 +63,45 @@ const RootLayouts = () => {
 
                     </div>
                     <div className="divider"></div>
-                    <div className='h-screen'>
+                    <div className='h-screen '>
                         <h1 className='mt-5 font-bold text-xl'>Menu</h1>
-                        <div className='flex flex-col space-y-2'>
+                        <div className='flex flex-col '>
                             {/* Home button */}
-                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
-                                <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                                <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                                <span class="relative"><div className='flex items-center space-x-2'>
-                                    <FaHome size={20} /><NavLink className=' font-bold plus-jakarta-sans-500' to={'/'}>Home</NavLink>
-                                </div></span>
+                            <div className="flex flex-col items-start gap-2">
+                                {/* Button Template */}
+                                {[
+                                    { icon: <FaHome className="text-blue-500" />, text: "Home", to: "/" },
+                                    { icon: <TbView360 className="text-green-500" />, text: "All Articles", to: "/allArticle" },
+                                    { icon: <GrUserManager className="text-purple-500" />, text: "My Articles", to: "/article" },
+                                    { icon: <TfiWrite className="text-pink-500" />, text: "Post Article", to: "/post" },
+                                    { icon: <FcBusinessman />, text: "Profile", to: "/profile" },
+                                    { icon: <FcComboChart />, text: "Dashboard", to: "/dashboard" },
+                                    { icon: <FcAbout />, text: "About Us", to: "/about" },
+                                ].map((btn, index) => (
+                                    <div key={index} className="relative group w-full">
+                                        <button className="relative w-full p-px font-semibold leading-6 text-white dark:text-white bg-gray-800 dark:bg-gray-900  rounded-xl  transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+                                            {/* Gradient border hover effect */}
+                                            <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                                            {/* Inner content background based on theme */}
+                                            <span className="relative z-10 block px-6 py-3 rounded-xl bg-white dark:bg-gray-950 transition-colors">
+                                                <div className="flex items-center justify-start space-x-3 group-hover:translate-x-1 transition-all duration-300">
+                                                    {btn.icon}
+                                                    <NavLink to={btn.to} className="font-bold plus-jakarta-sans-500 text-gray-900 dark:text-white">
+                                                        {btn.text}
+                                                    </NavLink>
+                                                </div>
+                                            </span>
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
 
-                            {/* view ALL articales  */}
-                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
-                                <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                                <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                                <span class="relative"><div className='flex items-center space-x-2'>
-                                    <TbView360 size={20} /><NavLink to={'/allArticle'} className=' font-bold plus-jakarta-sans-500'>All Articles</NavLink>
-                                </div></span>
-                            </div>
-
-                            {/* my articales */}
-
-                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
-                                <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                                <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                                <span class="relative"><div className='flex items-center space-x-2'>
-                                    <GrUserManager size={20} /><NavLink to={'/article'} className=' font-bold plus-jakarta-sans-500'>My Articles</NavLink>
-                                </div></span>
-                            </div>
-
-                            {/* post artical */}
-                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
-                                <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                                <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                                <span class="relative"><div className='flex items-center space-x-2'>
-                                    <TfiWrite size={20} /> <NavLink to={'/post'} className='font-bold plus-jakarta-sans-500'>Post Article</NavLink>
-                                </div></span>
-                            </div>
-
-                            {/* about */}
-
-                            <div href="#_" class="relative inline-flex items-center px-4 py-2 overflow-hidden text-lg font-medium border-2 border-gray-200 rounded-2xl hover:text-black group hover:bg-gray-50">
-                                <span class="absolute left-0 block w-full h-0 transition-all bg-gradient-to-br  opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                                <span class="absolute right-0 flex items-center justify-start w-10 h-5 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </span>
-                                <span class="relative"><div className='flex items-center space-x-2'>
-                                    <FcAbout size={20} /> <NavLink to={'/about'} className=' font-bold plus-jakarta-sans-500'>About Us</NavLink>
-                                </div></span>
-                            </div>
                         </div>
                     </div>
                 </aside>
 
 
-                <main className="flex-1/3 p-2">
+                <main className="flex-1/3 ">
                     <Outlet></Outlet>
                 </main>
 
