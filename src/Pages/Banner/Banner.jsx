@@ -20,7 +20,7 @@ const Banner = () => {
         }, []);
    
     return (
-        <div className=' bg-cover     dark:from-gray-900 dark:to-gray-800 flex flex-col items-center justify-center bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF]  py-5'>
+        <div className=' bg-cover  p-4    dark:from-gray-900 dark:to-gray-800 flex flex-col items-center justify-center bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF]  py-5'>
             <h1 data-aos="fade-down" data-aos-delay="100" class="md:text-6xl text-3xl font-bold mb-2 md:mb-6 text-center">
                 <span >Share Your</span>
                 <span class="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] dark:bg-gradient-to-r dark:from-purple-600 dark:via-pink-500 dark:to-yellow-400 text-transparent bg-clip-text">Knowledge</span>

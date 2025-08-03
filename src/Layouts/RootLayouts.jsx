@@ -13,6 +13,7 @@ import { GrUserManager } from 'react-icons/gr';
 import { TfiWrite } from 'react-icons/tfi';
 import { FcAbout, FcBusinessman, FcComboChart } from 'react-icons/fc';
 import { AuthContext } from '../Context/AuthContext';
+import { FiBarChart2 } from 'react-icons/fi';
 
 
 const RootLayouts = () => {
@@ -35,11 +36,12 @@ const RootLayouts = () => {
                                 <p></p>
                             )}
                         </div>
-                        <div className='text-center mt-1 ml-2 '>
+                        <div className='text-center  mt-1 ml-2 '>
                             {
                                 user?.displayName ? (
                                     <div>
-                                        <h1 className='text-sm mt-1 plus-jakarta-sans-500 font-bold'>{user.displayName}</h1>
+                                        <h1 className='text-xl mt-1 plus-jakarta-sans-500 font-bold'>{user.displayName}</h1>
+                                        <p className='text-sm'>{user?.email}</p>
                                     </div>
 
                                 ) : (
@@ -64,36 +66,80 @@ const RootLayouts = () => {
                     </div>
                     <div className="divider"></div>
                     <div className='h-screen '>
-                        <h1 className='mt-5 font-bold text-xl'>Menu</h1>
+                        <h1 className='mt-5 font-bold text-lg'>Menu</h1>
                         <div className='flex flex-col '>
                             {/* Home button */}
-                            <div className="flex flex-col items-start gap-2">
-                                {/* Button Template */}
-                                {[
-                                    { icon: <FaHome className="text-blue-500" />, text: "Home", to: "/" },
-                                    { icon: <TbView360 className="text-green-500" />, text: "All Articles", to: "/allArticle" },
-                                    { icon: <GrUserManager className="text-purple-500" />, text: "My Articles", to: "/article" },
-                                    { icon: <TfiWrite className="text-pink-500" />, text: "Post Article", to: "/post" },
-                                    { icon: <FcBusinessman />, text: "Profile", to: "/profile" },
-                                    { icon: <FcComboChart />, text: "Dashboard", to: "/dashboard" },
-                                    { icon: <FcAbout />, text: "About Us", to: "/about" },
-                                ].map((btn, index) => (
-                                    <div key={index} className="relative group w-full">
-                                        <button className="relative w-full p-px font-semibold leading-6 text-white dark:text-white bg-gray-800 dark:bg-gray-900  rounded-xl  transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
-                                            {/* Gradient border hover effect */}
-                                            <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-                                            {/* Inner content background based on theme */}
-                                            <span className="relative z-10 block px-6 py-3 rounded-xl bg-white dark:bg-gray-950 transition-colors">
-                                                <div className="flex items-center justify-start space-x-3 group-hover:translate-x-1 transition-all duration-300">
-                                                    {btn.icon}
-                                                    <NavLink to={btn.to} className="font-bold plus-jakarta-sans-500 text-gray-900 dark:text-white">
-                                                        {btn.text}
-                                                    </NavLink>
-                                                </div>
-                                            </span>
-                                        </button>
-                                    </div>
-                                ))}
+                            <div className="flex flex-col items-start">
+                                <div className="relative group w-full">
+
+
+                                    <NavLink
+                                        to={"/"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <FaHome className="text-blue-500" />
+                                        <span className="font-medium">Home</span>
+                                    </NavLink>
+
+                                    <NavLink
+                                        to={"/allArticle"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <TbView360 className="text-green-500" />
+                                        <span className="font-medium">All Articles</span>
+                                    </NavLink>
+
+
+                                    <NavLink
+                                        to={"/article"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <GrUserManager className="text-purple-500" />
+                                        <span className="font-medium">My Articles</span>
+                                    </NavLink>
+
+                                    <NavLink
+                                        to={"/post"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <TfiWrite className="text-pink-500" />
+                                        <span className="font-medium">Post Article</span>
+                                    </NavLink>
+                                    <div className="divider"></div>
+                                    <div className='mt-4 text-lg'>About</div>
+                                    <NavLink
+                                        to={"/profile"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <FcBusinessman />
+                                        <span className="font-medium">Profile</span>
+                                    </NavLink>
+
+                                    <NavLink
+                                        to={"/dashboard"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <FcComboChart />
+                                        <span className="font-medium">Dashboard</span>
+                                    </NavLink>
+
+                                    <NavLink
+                                        to={"/about"}
+                                        className={({ isActive }) =>
+                                            `flex items-center gap-2 px-4 py-2 rounded-xl border transition ${isActive ? 'border-blue-500' : 'border-transparent'} hover:bg-gray-100 dark:hover:bg-gray-800`}
+                                    >
+                                        <FcAbout />
+                                        <span className="font-medium">About Us</span>
+                                    </NavLink>
+
+                                </div>
+
                             </div>
 
                         </div>

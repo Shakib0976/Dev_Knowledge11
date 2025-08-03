@@ -1,4 +1,4 @@
-import React, { use, useContext } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { MdDeveloperMode } from "react-icons/md";
 import { ThemeContext } from '../Theme/ThemeProvider';
@@ -13,6 +13,28 @@ import { ShiftingDropDown } from './DropDown';
 const Navbar = () => {
     const { themeColor, toggleTheme } = useContext(ThemeContext);
     const { user, setUser } = use(AuthContext);
+
+
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                setShowNavbar(false); // Hide on scroll down
+            } else {
+                setShowNavbar(true); // Show on scroll up
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
 
 
@@ -59,7 +81,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className=' sticky  top-0  z-50 '>
+        <div className=' sticky  top-0  z-50  '>
             <div className='w-full text-center py-1 bg-black dark:bg-white text-white dark:text-black'>
                 <div className='flex justify-center text-sm'>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -69,7 +91,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div>
-                <div className="navbar dark:bg-gray-900 border-b-1 bg-white border-gray-50 dark:border-gray-600 w-full px-8 shadow-sm mx-auto">
+                <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-100 border-gray-50 dark:border-gray-600 w-full px-8 shadow-sm mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -90,7 +112,7 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
-                            <div className='space-x-5 '>
+                            <div className='space-x-5 -mt-4 mb-3 '>
                                 <ShiftingDropDown />
                             </div>
                         </ul>

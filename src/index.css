@@ -65,8 +65,28 @@ p {
   font-style: normal;
 }
 
-a.active {
-  color: blue;
+.button {
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #999;
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.button.active {
+  border: 1px solid #3b82f6; /* blue-500 */
+  background-color: #1f2937; /* gray-800 */
+  color: #fff;
+}
+
+/* Dark mode */
+.dark .button.active {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #111827; /* gray-900 */
 }
 
 
