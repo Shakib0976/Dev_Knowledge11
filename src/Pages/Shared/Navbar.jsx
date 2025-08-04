@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../Firebase/Firebase.config';
 import { AiFillHome } from "react-icons/ai";
 import { ShiftingDropDown } from './DropDown';
+import { FiHome, FiLayout, FiUser } from 'react-icons/fi';
 
 const Navbar = () => {
     const { themeColor, toggleTheme } = useContext(ThemeContext);
@@ -82,14 +83,7 @@ const Navbar = () => {
     </>
     return (
         <div className=' sticky  top-0  z-50  '>
-            <div className='w-full text-center py-1 bg-black dark:bg-white text-white dark:text-black'>
-                <div className='flex justify-center text-sm'>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2 2m-2-2m2 2l2 2M10 9v6m4-3H6m3-3h6m-3 6v6m3-3h-6m9-9v4m-2-2h4m5 16l2 2m-2-2m2 2l2 2M10 12h4m-2 0V8m0 4v4" />
-                    </svg>
-                    Welcome to the Knowledge <span className='ml-2 bg-white dark:bg-black text-black dark:text-white  px-2 rounded-2xl' > Community</span>
-                </div>
-            </div>
+
             <div>
                 <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-100 border-gray-50 dark:border-gray-600 w-full px-8 shadow-sm mx-auto">
                     <div className="navbar-start">
@@ -112,8 +106,28 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
-                            <div className='space-x-5 -mt-4 mb-3 '>
-                                <ShiftingDropDown />
+                            <div className="grid grid-cols-3 gap-12">
+                                <a
+                                    href="#"
+                                    className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
+                                >
+                                    <FiHome className="mb-2 text-xl dark:text-white text-black" />
+                                    <span className="text-xs">Home</span>
+                                </a>
+                                <a
+                                    href="#"
+                                    className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
+                                >
+                                    <FiUser className="mb-2 text-xl dark:text-white text-black" />
+                                    <span className="text-xs">Profile</span>
+                                </a>
+                                <a
+                                    href="#"
+                                    className="flex w-full flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                                >
+                                    <FiLayout className="mb-2 text-xl dark:text-white text-black" />
+                                    <span className="text-xs">Dashboard</span>
+                                </a>
                             </div>
                         </ul>
                     </div>
@@ -221,6 +235,9 @@ const Navbar = () => {
                         )}
                     </div>
                 </div>
+            </div>
+            <div className='hidden lg:block'>
+                < ShiftingDropDown />
             </div>
         </div>
 

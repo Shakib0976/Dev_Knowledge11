@@ -10,10 +10,42 @@ import {
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 
+
+
+
 export const ShiftingDropDown = () => {
+
+
+    const [showHeader, setShowHeader] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY) {
+                // Scrolling down
+                setShowHeader(false);
+            } else {
+                // Scrolling up
+                setShowHeader(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
     return (
-        <div className="flex h-10 w-full justify-start p-4  text-neutral-200 md:justify-center">
-            <Tabs />
+        <div
+            className={`fixed top-5 left-0 -z-50 w-full py-4   transition-transform duration-300 ${showHeader ? "translate-y-10" : "-translate-y-full"
+                }`}
+        >
+            <div className="flex h-12 w-full justify-start dark:bg-gray-900 mb-2  bg-gray-100 pb-4 text-neutral-200 md:justify-start">
+                <Tabs />
+            </div>
         </div>
     );
 };

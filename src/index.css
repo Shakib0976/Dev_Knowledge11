@@ -78,15 +78,19 @@ p {
 }
 
 .button.active {
-  border: 1px solid #3b82f6; /* blue-500 */
-  background-color: #1f2937; /* gray-800 */
+  border: 1px solid #3b82f6;
+  /* blue-500 */
+  background-color: #1f2937;
+  /* gray-800 */
   color: #fff;
 }
 
 /* Dark mode */
 .dark .button.active {
-  background-color: #f3f4f6; /* gray-100 */
-  color: #111827; /* gray-900 */
+  background-color: #f3f4f6;
+  /* gray-100 */
+  color: #111827;
+  /* gray-900 */
 }
 
 
@@ -473,3 +477,6 @@ h5 {
   }
 }
 
+.bg-4 {
+  background: linear-gradient(to bottom, #301845, #0a050e);
+}
