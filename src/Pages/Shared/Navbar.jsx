@@ -100,7 +100,16 @@ const Navbar = () => {
 
                             </ul>
                         </div>
-                        <a style={{ fontFamily: 'Poppins' }} className="btn btn-ghost   md:text-2xl font-bold"><img className='lg:w-25  w-20' src="/src/assets/devLogo/Orange_Accents_in_Developer_Logo-removebg-preview.png" alt="" /><span className='hidden lg:block'>Dev<span className='text-orange-400'>Knowledge</span></span></a>
+                        <a style={{ fontFamily: 'Poppins' }} className="btn btn-ghost md:text-2xl font-bold">
+                            <img
+                                className="w-16 md:w-20 lg:w-24"
+                                src="https://i.ibb.co.com/pjQ4Kk0H/Orange-Accents-in-Developer-Logo-removebg-preview.png"
+                                alt="DevKnowledge Logo"
+                            />
+                            <span className="hidden md:inline ml-2">
+                                Dev<span className="text-orange-400">Knowledge</span>
+                            </span>
+                        </a>
 
                     </div>
                     <div className="grid grid-cols-3 ml-4  lg:hidden gap-12">
@@ -108,22 +117,22 @@ const Navbar = () => {
                             href="#"
                             className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
                         >
-                            <FiHome className="mb-2 text-xl dark:text-white text-black" />
-                            <span className="text-xs">Home</span>
+                            <FiHome size={25} className="mb-2 text-xl dark:text-white text-black" />
+
                         </Link>
                         <a
                             href="#"
                             className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
                         >
-                            <FiUser className="mb-2 text-xl dark:text-white text-black" />
-                            <span className="text-xs">Profile</span>
+                            <FiUser size={25} className="mb-2 text-xl dark:text-white text-black" />
+
                         </a>
                         <a
                             href="#"
                             className="flex w-full flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
                         >
-                            <FiLayout className="mb-2 text-xl dark:text-white text-black" />
-                            <span className="text-xs">Dashboard</span>
+                            <FiLayout size={25} className="mb-2 text-xl dark:text-white text-black" />
+
                         </a>
                     </div>
                     <div className="navbar-center hidden  lg:flex">
@@ -245,11 +254,14 @@ const Navbar = () => {
                             </div>
                         ) : (
                             <div>
-                                <div className='hidden  space-x-3 md:block'>
-                                    <Link className='hover-underline' to={'/login'}>login</Link>
+                                <div className=' hidden lg:block space-x-3'>
+                                    <Link className='  hover-underline' to={'/login'}>login</Link>
                                     <Link className=' btn glow-on-hover ' to={'/register'}>Create Account</Link>
 
 
+                                </div>
+                                <div>
+                                    <Link className=' btn bg-blue-400 lg:hidden text-white rounded-2xl mb-2  ' to={'/register'}>Signin</Link>
                                 </div>
 
                             </div>
