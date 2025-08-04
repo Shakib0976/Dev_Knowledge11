@@ -85,35 +85,57 @@ const Navbar = () => {
         <div className=' sticky  top-0  z-50  '>
 
             <div>
-                <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-100 border-gray-50 dark:border-gray-600 w-full px-8 shadow-sm mx-auto">
+                <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-100 border-gray-50 dark:border-gray-600 w-full lg:px-8  shadow-sm mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-                                </svg>
-                            </div>
+
+
                             <ul
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                                 <div className='flex flex-col p-2 space-y-2 text-bold hover:bg-gray-200'>
                                     {links}
                                 </div>
+
+
                             </ul>
                         </div>
-                        <a style={{ fontFamily: 'Poppins' }} className="btn btn-ghost  md:text-2xl font-bold"><img className='w-25  hidden md:block' src="/src/assets/devLogo/Orange_Accents_in_Developer_Logo-removebg-preview.png" alt="" />Dev<span className='text-orange-400'>Knowledge</span></a>
+                        <a style={{ fontFamily: 'Poppins' }} className="btn btn-ghost   md:text-2xl font-bold"><img className='lg:w-25  w-20' src="/src/assets/devLogo/Orange_Accents_in_Developer_Logo-removebg-preview.png" alt="" /><span className='hidden lg:block'>Dev<span className='text-orange-400'>Knowledge</span></span></a>
 
                     </div>
-                    <div className="navbar-center hidden lg:flex">
+                    <div className="grid grid-cols-3 ml-4  lg:hidden gap-12">
+                        <Link to={'/'}
+                            href="#"
+                            className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
+                        >
+                            <FiHome className="mb-2 text-xl dark:text-white text-black" />
+                            <span className="text-xs">Home</span>
+                        </Link>
+                        <a
+                            href="#"
+                            className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
+                        >
+                            <FiUser className="mb-2 text-xl dark:text-white text-black" />
+                            <span className="text-xs">Profile</span>
+                        </a>
+                        <a
+                            href="#"
+                            className="flex w-full flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                        >
+                            <FiLayout className="mb-2 text-xl dark:text-white text-black" />
+                            <span className="text-xs">Dashboard</span>
+                        </a>
+                    </div>
+                    <div className="navbar-center hidden  lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             <div className="grid grid-cols-3 gap-12">
-                                <a
+                                <Link to={'/'}
                                     href="#"
                                     className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
                                 >
                                     <FiHome className="mb-2 text-xl dark:text-white text-black" />
                                     <span className="text-xs">Home</span>
-                                </a>
+                                </Link>
                                 <a
                                     href="#"
                                     className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
@@ -142,7 +164,7 @@ const Navbar = () => {
 
                             {/* mobilde theme */}
 
-                            <label className="btn rounded-full flex md:hidden mr-2 cursor-pointer gap-2">
+                            {/* <label className="btn rounded-full flex md:hidden ml-4 -mt-6 cursor-pointer gap-2">
                                 {themeColor === 'light' ? (
                                     // Show Moon icon for switching to dark
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +185,7 @@ const Navbar = () => {
                  M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                                     </svg>
                                 )}
-                            </label>
+                            </label> */}
 
                             {/* large device  */}
 

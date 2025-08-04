@@ -29,7 +29,7 @@ const Article = () => {
 
 
 
-    const HandlePostFrom = e => {
+    const HandlePostFrom = async (e) => {
         e.preventDefault();
         const form = e.target;
         const comment = form.comment.value;
@@ -42,6 +42,19 @@ const Article = () => {
             user_photo: user?.photoURL,
         }
         console.log(commentData);
+
+        try {
+            const response = await axios.put(`https://dev-talks-11-server.vercel.app/allTask/comment/${taskId}`, {
+                comment: {
+                    text: comment,
+                    email: user?.email,
+                },
+            });
+
+            console.log('Comment added:', response.data);
+        } catch (error) {
+            console.error('Error adding comment:', error);
+        }
 
 
         axios.post('https://dev-talks-11-server.vercel.app/comment', commentData)

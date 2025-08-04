@@ -17,8 +17,32 @@ const Scarch = () => {
         { type: "Illustration", name: "ManyPixels", logo: "🌀", link: "https://www.manypixels.co", description: "Free daily illustrations for startups." },
         { type: "Component UI", name: "ShadCN UI", logo: "💎", link: "https://ui.shadcn.com", description: "Accessible, customizable React components." },
         { type: "Component UI", name: "Radix UI", logo: "🧩", link: "https://www.radix-ui.com", description: "Unstyled, accessible UI primitives for React." },
-        { type: "Animation Website", name: "LottieFiles", logo: "🔁", link: "https://lottiefiles.com", description: "Library of animated icons and illustrations." },
-        { type: "Animation Website", name: "Motion.dev", logo: "🎞️", link: "https://motion.dev", description: "Animate anything in React easily with Motion One." }
+        { type: "Illustration", name: "LottieFiles", logo: "🔁", link: "https://lottiefiles.com", description: "Library of animated icons and illustrations." },
+        { type: "Animation Website", name: "Motion.dev", logo: "🎞️", link: "https://motion.dev", description: "Animate anything in React easily with Motion One." },
+        {
+            type: "Animation Button Website",
+            name: "Webdeasy Button Animations",
+            logo: "🔘",
+            link: "https://dev.to/webdeasy/top-20-css-buttons-animations-f41",
+            description: "A curated list of 20 modern and creative CSS button animations with source code."
+        }
+        ,
+        {
+            type: "Animation Buttons Website",
+            name: "Uiverse Buttons",
+            logo: "🌐",
+            link: "https://uiverse.io/buttons",
+            description: "Community-made animated UI components including buttons, cards, toggles, and more — all with HTML, CSS, and Tailwind."
+        }
+        ,
+        {
+            type: " Animated Icons / Button",
+            name: "Gradienty Animated Button/ Icons",
+            logo: "⚙️",
+            link: "https://gradienty.codes/animated-icons",
+            description: "A collection of beautiful animated SVG icons powered by CSS gradients and keyframes."
+        }
+
     ];
 
     const normalizedSearch = searchTerm.trim().toLowerCase();
@@ -27,8 +51,8 @@ const Scarch = () => {
         : toolsData;
 
     return (
-        <div>
-            <div className="relative text-gray-900 dark:text-white mb-6">
+        <div className='mb-25'>
+            <div className=" sticky top-3 text-gray-900 dark:text-white mb-6">
                 <input
                     type="text"
                     placeholder="Search website  (e.g., Color Tool , illustrator)"
@@ -57,7 +81,7 @@ const Scarch = () => {
                 filteredData.map((tool, index) => (
                     <div
                         key={index}
-                       
+
 
                         className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow hover:shadow-lg dark:hover:shadow-sm hover:shadow-blue-200 transition-all p-4 mb-4"
                     >

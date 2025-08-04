@@ -43,7 +43,7 @@ export const ShiftingDropDown = () => {
             className={`fixed top-5 left-0 -z-50 w-full py-4   transition-transform duration-300 ${showHeader ? "translate-y-10" : "-translate-y-full"
                 }`}
         >
-            <div className="flex h-12 w-full justify-start dark:bg-gray-900 mb-2  bg-gray-100 pb-4 text-neutral-200 md:justify-start">
+            <div className="flex h-12 w-full justify-start dark:bg-gray-900 mb-2  bg-[#76BDFF20] pb-4 text-neutral-200 md:justify-start">
                 <Tabs />
             </div>
         </div>
