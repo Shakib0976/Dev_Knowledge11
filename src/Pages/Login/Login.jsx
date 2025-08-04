@@ -127,7 +127,7 @@ const Login = () => {
                         {/* Sign in Button */}
                         <button
                             type="submit"
-                            className="w-full py-2 bg-black border border-gray-200 text-white hover:shadow-sm hover:text-blue-300 hover:shadow-blue-400 dark:hover:bg-gray-600 dark:bg-white dark:text-black rounded-full transition font-bold text-lg"
+                            className="w-full py-2 bg-black border border-gray-200 text-white hover:shadow-sm hover:text-blue-300 hover:shadow-blue-400 dark:hover:bg-gray-600   rounded-full transition font-bold text-lg"
                         >
                             Signin
                         </button>
@@ -147,7 +147,7 @@ const Login = () => {
                     {/* Google Sign-in */}
                     <button
                         onClick={handleSigninGoogle}
-                        className="w-full flex items-center justify-center gap-2 py-3 bg-white border border-gray-300 dark:text-white hover:text-blue-300 dark:border-gray-600 rounded-full hover:shadow-sm hover:shadow-blue-400 dark:hover:bg-gray-700 text-sm text-black font-medium transition"
+                        className="w-full flex items-center justify-center gap-2 py-3 bg-white border border-gray-300 hover:text-blue-300 dark:border-gray-600 rounded-full hover:shadow-sm  hover:shadow-blue-400 dark:hover:bg-gray-700 text-sm text-black font-medium transition"
                     >
                         <svg
                             aria-label="Google logo"
@@ -181,7 +181,6 @@ const Login = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

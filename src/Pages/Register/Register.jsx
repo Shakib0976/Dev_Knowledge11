@@ -119,7 +119,7 @@ const Register = () => {
 
                     {error && <p className="text-red-600 text-sm">{error}</p>}
 
-                    <button type="submit" className="w-full py-3 mt-2 font-semibold bg-transparent hover:bg-gray-200 border-2 text-black border-gray-300 dark:hover:bg-gray-600 dark:bg-white dark:text-black rounded-full transition">
+                    <button type="submit" className="w-full py-3 mt-2 font-semibold hover:bg-gray-200 border-2 text-white bg-black border-gray-300 dark:hover:bg-gray-600 dark:bg-black dark:text-white rounded-full transition">
                         Sign Up
                     </button>
                 </form>
