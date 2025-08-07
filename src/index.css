@@ -480,3 +480,97 @@ h5 {
 .bg-4 {
   background: linear-gradient(to bottom, #301845, #0a050e);
 }
+
+:root {
+  --primary: #3B82F6;
+  /* Blue-500 */
+  --primary-dark: #2563EB;
+  /* Blue-600 */
+  --gray: #D1D5DB;
+  /* Gray-300 */
+  --success: #10B981;
+  /* Green-500 */
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.button-container {
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 40px;
+  text-align: center;
+}
+
+.fancy-button {
+  outline: none;
+  height: 40px;
+  width: 130px;
+  text-align: center;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.fancy-button::after {
+  content: "Post Comment";
+}
+
+.fancy-button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.fancy-button:active {
+  letter-spacing: 2px;
+}
+
+/* Loading */
+.fancy-button.onclic {
+  width: 40px;
+  border-color: var(--gray);
+  border-width: 3px;
+  font-size: 0;
+  border-left-color: var(--primary);
+  animation: rotating 2s 0.25s linear infinite;
+}
+
+.fancy-button.onclic::after {
+  content: "";
+}
+
+.fancy-button.onclic:hover {
+  background: white;
+  color: var(--primary);
+}
+
+/* Checkmark */
+.fancy-button.validate {
+  font-size: 13px;
+  color: white;
+  background: var(--success);
+}
+
+.fancy-button.validate::after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
+}
+
+/* Spinner animation */
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

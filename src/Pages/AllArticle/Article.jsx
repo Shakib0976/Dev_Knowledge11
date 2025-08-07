@@ -15,6 +15,20 @@ const Article = () => {
 
     const [comments, setComments] = useState([]);
     const [taskId, setTaskId] = useState(null)
+    const [status, setStatus] = useState('idle');
+
+    const handleClick = () => {
+        if (status !== 'idle') return;
+
+        setStatus('loading');
+        setTimeout(() => {
+            setStatus('done');
+            setTimeout(() => {
+                setStatus('idle');
+            }, 1250);
+        }, 2250);
+    };
+
 
 
     useEffect(() => {
@@ -137,100 +151,142 @@ const Article = () => {
             <div>
                 <Link to={'/allArticle'} className='btn mt-15 mb-5'> <FaArrowLeftLong /> Back</Link>
             </div>
-            <div className=" w-full  bg-cover     dark:from-gray-800 dark:to-gray-700  bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] image-full  shadow-sm">
+            <div className="w-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 shadow-md rounded-xl overflow-hidden">
+                <div className="card-body p-4 md:p-6 dark:text-white text-gray-800">
+                    <img className="rounded-xl w-full max-w-3xl mx-auto object-cover" src={task.url} alt="task cover" />
 
-                <div className="card-body rounded-xl dark:text-white text-black">
-                    <img className='rounded-xl md:w-180 mx-auto' src={task.url} alt="" />
+                    <h2 className="text-xl md:text-2xl font-semibold mt-4 mb-2">Category: {task.category}</h2>
+                    <h1 className="text-lg md:text-xl font-medium mb-2">Title: {task.article}</h1>
 
-                    <h2 className="card-title dark:text-white text-black">Category:  {task.category
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                        <span className="font-semibold">Content:</span> {task.content}
+                    </p>
 
-                    }</h2>
-                    <h1 className="card-title dark:text-white text-black">Title : {task.article}</h1>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                        <span className="font-semibold text-lg">Tags:</span>
+                        {task.tags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="bg-green-200 dark:bg-green-500 text-sm px-3 py-1 rounded-2xl text-gray-800 dark:text-white"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
 
-
-                    <h1 className="card-title text-sm dark:text-white text-gray-2000">Content: {task.content}</h1>
-
-                    {/* tags */}
-                    <h1>Tags :</h1>
-                    <h1 className=' dark:text-white w-1 text-black flex md:space-x-3'>{task.tags.map(tag => <p className='bg-green-300 dark:bg-green-500  md:px-4 px-2 md:py-1  rounded-2xl'>{tag}</p>)}</h1>
-
-                    <div className='flex justify-between'>
-                        <div className='flex space-x-3 items-center  mt-5'>
-                            <div >
-                                {task?.Author_Photo ? (
-                                    <img className='rounded-full w-15' src={task?.Author_Photo} alt="User Avatar" />
-                                ) : (
-                                    <RxAvatar size={40} className="w-full h-full text-2xl" />
-                                )}
-                            </div>
+                    {/* Author & Stats */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div className="flex items-center gap-3">
+                            {task?.Author_Photo ? (
+                                <img className="rounded-full w-12 h-12 object-cover" src={task.Author_Photo} alt="Author Avatar" />
+                            ) : (
+                                <RxAvatar size={48} className="text-gray-500" />
+                            )}
                             <div>
-                                <p className='dark:text-white text-black md:card-title'>{task.name}</p>
-                                <p className='dark:text-white text-black'>Date: {task.date}</p>
+                                <p className="text-base font-medium">{task.name}</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Date: {task.date}</p>
                             </div>
                         </div>
-                        <div className='flex items-center gap-6'>
-                            <h1 className='md:flex hidden md:block items-center gap-3 dark:text-white text-black'><BiLike /> {likeCount} Like</h1>
-                            <h1 className='md:flex hidden md:block items-center gap-3 dark:text-white text-black'><FaRegComment />  {comments.length} Comment</h1>
+
+                        <div className="flex items-center gap-6 text-sm text-gray-700 dark:text-gray-300">
+                            <div className="hidden md:flex items-center gap-2">
+                                <BiLike size={20} />
+                                {likeCount} Likes
+                            </div>
+                            <div className="hidden md:flex items-center gap-2">
+                                <FaRegComment size={20} />
+                                {comments.length} Comments
+                            </div>
                         </div>
                     </div>
 
-                    <div className='items-center  space-x-3'>
-                        <h1 className='flex btn  w-30 mt-5 items-center gap-3'><button onClick={handleLike}>{
-                            liked ? <p className='text-blue-600'><AiFillLike size={25} /></p> : <BiLike size={25} />
-                        }</button> {likeCount}</h1>
-
-
-
+                    {/* Like Button */}
+                    <div className="mt-5">
+                        <button
+                            onClick={handleLike}
+                            className="flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-700 text-blue-700 dark:text-white rounded-lg hover:bg-blue-200 dark:hover:bg-blue-600 transition"
+                        >
+                            {liked ? <AiFillLike size={22} /> : <BiLike size={22} />}
+                            <span className="text-sm font-medium">{likeCount}</span>
+                        </button>
                     </div>
-
-
-
-                </div>
-
-                <div>
                 </div>
             </div>
+
 
             {/* comment box */}
-            <div className=' my-3  bg-cover     dark:from-gray-800 dark:to-gray-700  bg-gradient-to-r from-[#F0F4FF] to-[#FDF0FF] image-full  shadow-sm'>
-                <div className="collapse-title font-semibold"><h1 className='md:flex hidden md:block items-center gap-3 dark:text-white text-black'><FaRegComment />  {comments.length} Comment</h1></div>
+            {/* Comment Box */}
+            <div className="my-6 rounded-lg bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 shadow-md">
+                <div className="px-4 py-3 border-b border-gray-300 dark:border-gray-600">
+                    <h1 className="flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-white">
+                        <FaRegComment /> {comments.length} Comment
+                    </h1>
+                </div>
 
-                <form onSubmit={HandlePostFrom}>
-                    <div className='flex space-x-3 p-4'>
-                        {user?.photoURL ? (
-                            <img className='rounded-full w-15 h-15' src={user?.photoURL} alt="User Avatar" />
-                        ) : (
-                            <RxAvatar size={45} />
-                        )}
+                <form onSubmit={HandlePostFrom} className="px-4 py-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+                        <div className="flex-shrink-0">
+                            {user?.photoURL ? (
+                                <img
+                                    className="rounded-full w-12 h-12 object-cover"
+                                    src={user?.photoURL}
+                                    alt="User Avatar"
+                                />
+                            ) : (
+                                <RxAvatar size={48} className="text-gray-500" />
+                            )}
+                        </div>
 
-                        <textarea type='test' name='comment' className="textarea w-[100%]" placeholder="Write Comment...."></textarea>
+                        <div className="flex-1 min-w-0">
+                            <textarea
+                                name="comment"
+                                className="textarea textarea-bordered w-full rounded-md resize-none min-h-[80px] dark:bg-gray-900 dark:text-white"
+                                placeholder="Write your comment..."
+                            ></textarea>
+                        </div>
                     </div>
 
-                    <button type='submit' className='btn ml-22  -mt-2 btn-primary flex'> <LuSend /> Post Comment</button>
-
+                    <div className="flex justify-end mt-3">
+                        <button
+                            type="submit"
+                            className={`fancy-button ${status === 'loading' ? 'onclic' : ''} ${status === 'done' ? 'validate' : ''}`}
+                            onClick={handleClick}
+                        ></button>
+                    </div>
                 </form>
 
-                <div>
-                    <div>
-                        {
-                            comments.map(comment => (
-                                <div key={comment._id} className='flex space-x-1 p-4  items-center'>
-                                    {comment.user_photo ? (
-                                        <img className='rounded-full w-10 h-10' src={comment.user_photo} alt='this is user avatar' />
-                                    ) : (
-                                        <RxAvatar size={25} />
-                                    )
-                                    }
-                                    <div className=' p-3 w-full'>
-                                        <h1 className='text-lg mb-1 font-bold '>{comment.user_name}</h1>
-                                        <h1 className='bg-gray-200 dark:bg-gray-800 py-4 px-2'>{comment.comment}</h1>
-                                    </div>
-                                </div>
-                            ))
-                        }
-                    </div>
+                <div className="px-4 pb-4">
+                    {comments.map((comment) => (
+                        <div
+                            key={comment._id}
+                            className="flex flex-col sm:flex-row items-start gap-3 py-3 border-t border-gray-200 dark:border-gray-700"
+                        >
+                            <div className="flex-shrink-0">
+                                {comment.user_photo ? (
+                                    <img
+                                        className="rounded-full w-10 h-10 object-cover"
+                                        src={comment.user_photo}
+                                        alt="User Avatar"
+                                    />
+                                ) : (
+                                    <RxAvatar size={32} className="text-gray-500" />
+                                )}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <h2 className="text-sm font-semibold text-gray-800 dark:text-white">
+                                    {comment.user_name}
+                                </h2>
+                                <p className="mt-1 text-sm bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-3 rounded-md break-words">
+                                    {comment.comment}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
+
+
         </div>
     );
 };

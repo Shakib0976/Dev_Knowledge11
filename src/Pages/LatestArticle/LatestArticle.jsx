@@ -89,9 +89,9 @@ const LatestArticle = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-full font-medium transition duration-300 ease-in-out">
-                                    Follow
-                                </button>
+                                <Link  to={`/allArticle/${article._id}`} className="hoverButton">
+                                    Explore
+                                </Link>
                             </div>
 
                             {/* Article Image */}
@@ -125,8 +125,8 @@ const LatestArticle = () => {
 
                                 {/* Footer (optional - for likes/comments, not explicitly in your data but common for such cards) */}
                                 <div className="flex  items-center justify-start space-x-8 text-sm">
-                                    <Link className='flex hover:bg-gray-200 p-2 rounded-2xl text-black dark:text-white items-center gap-2'><BiLike size={25} /> <span className='text-gray-900 dark:text-white font-bold'>{article?.likeBy?.length} Likes</span></Link>
-                                    <Link className='flex hover:bg-gray-200 p-2 rounded-2xl text-black dark:text-white items-center gap-2'><FaRegComment size={20} /><span className='text-gray-900  font-bold dark:text-white'>{article?.comments?.length}Comment</span></Link>
+                                    <Link to={`/allArticle/${article._id}`} className='flex hover:bg-gray-200 p-2 rounded-2xl text-black dark:text-white items-center gap-2'><BiLike size={25} /> <span className='text-gray-900 dark:text-white font-bold'>{article?.likeBy?.length} Likes</span></Link>
+                                    <Link to={`/allArticle/${article._id}`} className='flex hover:bg-gray-200 p-2 rounded-2xl text-black dark:text-white items-center gap-2'><FaRegComment size={20} /><span className='text-gray-900  font-bold dark:text-white'>{article?.comments?.length}Comment</span></Link>
                                 </div>
                             </div>
                         </div>
