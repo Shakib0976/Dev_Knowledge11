@@ -1,6 +1,6 @@
 
 ## Screenshot
-![Project Screenshot](https://ibb.co/sghkH2J)
+![Project Screenshot](https://i.ibb.co.com/mCQtJbbQ/Screenshot-2025-08-08-190459.png)
 
 
 Description:'
@@ -88,4 +88,4 @@ Core Features
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Shakib0976/Dev_Knowledge11.git
-cd Dev-talks
+cd Dev-Knowledge
