@@ -1,4 +1,12 @@
 
+## Screenshot
+![Project Screenshot](https://ibb.co/sghkH2J)
+
+
+Description:'
+
+A short project overview: DevKnowledge is a collaborative platform for students to create, share, and discuss academic articles and resources. It aims to build a community-driven knowledge hub where users can publish articles, comment on posts, search and filter content by topic, and interact securely using Firebase authentication.
+
 ## 🚀 Live URL
 
  https://devknowledge-5ed93.web.app
@@ -21,7 +29,7 @@ The goal of this project is to foster a collaborative academic environment where
 - 7 Secure user data and protected routes
 
 
-## 🛠 Tech Stack
+## 🛠  main technologies used
 
 ### Frontend:
 - **React.js**
@@ -55,3 +63,29 @@ The goal of this project is to foster a collaborative academic environment where
 - `cors`
 - `dotenv`
 - `nodemon`
+
+
+Core Features
+
+1.Full CRUD for articles (Create / Read / Update / Delete)
+
+2.Article comments for interactive discussions
+
+3.Firebase Authentication (Email/Password + Google Sign-In)
+
+4.Topics / categories to organize knowledge by subject
+
+5.Responsive UI (mobile, tablet, desktop)
+
+6.Search and filter articles
+
+7.Protected routes and secure user flows (JWT for backend API calls)
+
+
+
+## How to Run Locally
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/Shakib0976/Dev_Knowledge11.git
+cd Dev-talks
