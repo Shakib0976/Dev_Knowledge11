@@ -1,9 +1,9 @@
 
 ## Screenshot
-![Project Screenshot](https://i.ibb.co.com/mCQtJbbQ/Screenshot-2025-08-08-190459.png)
+![Project Screenshot](https://i.ibb.co/mCQtJbbQ/Screenshot-2025-08-08-190459.png)
 
 
-Description:'
+Description:
 
 A short project overview: DevKnowledge is a collaborative platform for students to create, share, and discuss academic articles and resources. It aims to build a community-driven knowledge hub where users can publish articles, comment on posts, search and filter content by topic, and interact securely using Firebase authentication.
 
