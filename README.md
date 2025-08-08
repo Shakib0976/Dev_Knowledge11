@@ -1,6 +1,6 @@
 
 ## Screenshot
-![Project Screenshot](./assets/devLogo/123.png)
+![Project Screenshot](https://i.ibb.co.com/mCQtJbbQ/Screenshot-2025-08-08-190459.png)
 
 
 Description:
