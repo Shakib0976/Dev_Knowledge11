@@ -153,7 +153,7 @@ const MyArticle = () => {
                     <div className='w-11/12 mx-auto my-10 '>
                         <h1 className='text-2xl mt-15 mb-2 text-center md:text-4xl'>My Articles</h1>
                         <p className='text-center mb-8'>Manage your published articles</p>
-                        <div  className='bg-gray-100 dark:bg-gray-800 p-5'>
+                        <div  className='bg-white shadow-xl rounded-2xl dark:bg-gray-900 p-5'>
                             <div className="overflow-x-auto">
                                 <table className="table">
                                     {/* head */}
