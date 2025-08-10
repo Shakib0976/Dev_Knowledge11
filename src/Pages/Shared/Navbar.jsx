@@ -278,7 +278,7 @@ const Navbar = () => {
                                         {
                                             user && <div className='lg:hidden'>
                                                 <NavLink
-                                                    href="#"
+                                                    to={'/profile'}
                                                     className=" text-neutral-400 transition-colors hover:text-neutral-50"
                                                 >
                                                     <FiUser size={25} className="mb-2 text-xl dark:text-white text-black" />

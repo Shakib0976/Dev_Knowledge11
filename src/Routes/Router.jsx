@@ -15,6 +15,7 @@ import PrivateRouter from "./PrivateRouter";
 import { Suspense } from "react";
 import Loader from "../Layouts/Loader";
 import CategoryArticle from "../Pages/MyArticle/CategoryArticle";
+import ProfileCard from "../Pages/Profile/Profilecard";
 
 
 
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
           <CategoryArticle></CategoryArticle>
         </Suspense>,
         loader: ({ params }) => fetch(`https://dev-talks-11-server.vercel.app/category/${params.category}`)
+      },
+      {
+        path: '/profile',
+        element:<PrivateRouter><ProfileCard></ProfileCard></PrivateRouter>
       }
     ]
   },
