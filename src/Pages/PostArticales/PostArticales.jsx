@@ -58,16 +58,16 @@ const PostArticales = () => {
         <div className=' py-15 mx-auto w-11/12'>
             <h1 className='text-center space-grotesk-500 text-2xl md:text-4xl font-semibold'>Post New Article </h1>
             <p className='text-center space-grotesk-500 py-2 text-xl'>Share your knowledge with the community</p>
-            <div className='py-10  dark:bg-gray-800  bg-blue-100 max-w-2xl  mt-10 mb-25  p-6 justify-center items-center mx-auto'>
+            <div className='py-10  dark:bg-gray-900  bg-white rounded-2xl shadow-xl max-w-2xl  mt-10 mb-25  p-6 justify-center items-center mx-auto'>
                 <form onSubmit={handlePostArticles}>
                     <div className='md:flex items-center justify-center  space-x-3'>
                         <fieldset className="fieldset w-full my-1">
                             <legend className=" fieldset-legend">Article Title *</legend>
-                            <input type="text" name='article' className="input" placeholder="Enter article title" />
+                            <input type="text" name='article' className="input bg-gray-100 dark:bg-gray-800" placeholder="Enter article title" />
                         </fieldset>
                         <div>
                             <label className="block  font-medium mb-1 my-2 space-grotesk-500">Category</label>
-                            <select name='category' className="w-70 bg-base-100 px-4 py-2 border text-gray-500 rounded-md ">
+                            <select name='category' className="w-70 bg-gray-100 dark:bg-gray-800 px-4 py-2 border text-gray-500 rounded-md ">
                                 <option >Select a category</option>
                                 <option>Development</option>
                                 <option>Marketing</option>
@@ -84,7 +84,7 @@ const PostArticales = () => {
                     {/* text area  */}
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Content *</legend>
-                        <textarea name='content' className="textarea w-full my-1 h-24" placeholder="write your article content here"></textarea>
+                        <textarea name='content' className="bg-gray-100 dark:bg-gray-800 textarea w-full my-1 h-24" placeholder="write your article content here"></textarea>
                     </fieldset>
 
                     {/* tags */}
@@ -94,18 +94,18 @@ const PostArticales = () => {
                             <input
                                 type="text"
                                 name='tags'
-                                className="border border-gray-300 bg-base-100 p-2 rounded w-75"
+                                className="border border-gray-300 bg-gray-100 dark:bg-gray-800 p-2 rounded w-75"
                                 placeholder="enter tags"
                             />
                             <p className='text-sm  text-gray-500'>Separate tags with commas</p>
                         </div>
                         <div>
-                            <input name='date' type="date" className="input w-75 mx-auto mt-1" />
+                            <input name='date' type="date" className="input  bg-gray-100 dark:bg-gray-800 w-75 mx-auto mt-4" />
                         </div>
                     </div>
 
                     {/* img url */}
-                    <label className="input bg-base-100 w-full my-5 validator">
+                    <label className="input bg-gray-100 dark:bg-gray-800 w-full my-5 validator">
                         <svg className="h-[1em]  opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g
                                 strokeLinejoin="round"
@@ -133,8 +133,8 @@ const PostArticales = () => {
                     <div>
                         <h1 className='text-xl  my-5'>Author Information : </h1>
                         <div className='flex flex-col my-2'>
-                            <input className='bg-base-100 py-2 my-1 w-full px-4' type="text" name='name' readOnly defaultValue={user?.displayName} />
-                            <input className='bg-base-100 py-2 my-1 w-full px-4' readOnly type="text" name='email' defaultValue={user?.email} />
+                            <input className='bg-gray-100 dark:bg-gray-800 py-2 my-1 w-full px-4' type="text" name='name' readOnly defaultValue={user?.displayName} />
+                            <input className='bg-gray-100 dark:bg-gray-800 py-2 my-1 w-full px-4' readOnly type="text" name='email' defaultValue={user?.email} />
                         </div>
                     </div>
 
