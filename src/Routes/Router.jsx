@@ -16,6 +16,7 @@ import { Suspense } from "react";
 import Loader from "../Layouts/Loader";
 import CategoryArticle from "../Pages/MyArticle/CategoryArticle";
 import ProfileCard from "../Pages/Profile/Profilecard";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 
 
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element:<PrivateRouter><ProfileCard></ProfileCard></PrivateRouter>
+      },
+      {
+        path:'/dashboard',
+        element: <PrivateRouter><Dashboard></Dashboard></PrivateRouter>
       }
     ]
   },

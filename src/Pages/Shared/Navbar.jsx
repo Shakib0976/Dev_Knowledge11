@@ -174,7 +174,7 @@ const Navbar = () => {
 
                                     <NavLink
                                     to={'/dashboard'}
-                                        href="#"
+                                      
                                         className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
                                     >
                                         <FiLayout size={25} className=" text-xl dark:text-white text-black" />
@@ -286,7 +286,7 @@ const Navbar = () => {
                                                 </NavLink>
 
                                                 <NavLink
-                                                    href="#"
+                                                        to={'/dashboard'}
                                                     className=" text-neutral-400 transition-colors hover:text-neutral-50"
                                                 >
                                                     <FiLayout size={25} className="mb-2 text-xl dark:text-white text-black" />
