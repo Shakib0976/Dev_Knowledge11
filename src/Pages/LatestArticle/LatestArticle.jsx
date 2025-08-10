@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { motion } from "framer-motion"
 import { FaRegComment } from 'react-icons/fa6';
 import { BiLike } from 'react-icons/bi';
@@ -127,6 +127,9 @@ const LatestArticle = () => {
                     ))
                 )}
 
+            </div>
+            <div className='items-center justify-center flex my-10'> 
+                <NavLink  to="/allArticle" className=' dark:hover:bg-blue-900  dark:bg-blue-950 px-20 btn rounded-full text-white py-5 hover:bg-blue-700 bg-blue-500'>See more article</NavLink>
             </div>
         </div>
     );

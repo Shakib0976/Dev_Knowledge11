@@ -27,15 +27,7 @@ const RootLayouts = () => {
             <div className='flex flex-col md:flex-row '>
                 <aside className="w-70 h-screen bg-white dark:bg-gray-900  sticky top-20 md:pt-8 dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] hidden lg:block dark:bg-gradient-to-r dark:from-black  border-base-100 p-4 overflow-y-auto">
                     <div className="flex mb-4 h-15">
-                        <div>
-                            {user?.photoURL ? (
-                                <img className='w-15 rounded-full' src={user.photoURL} alt="User Avatar" />
-                            ) : (
-
-                                <p></p>
-                            )}
-                        </div>
-                        <div className='text-center  mt-1 ml-2 '>
+                        <div className='text-center   mt-1 '>
                             {
                                 user?.displayName ? (
                                     <div>
@@ -146,7 +138,8 @@ const RootLayouts = () => {
 
                                     </div>
 
-                                </div></>
+                                </div>
+                                <div className="divider"></div></>
                         }
                         <div className=" py-5 hover:shadow-lg transition">
                             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">🚀 Latest Articles</h2>
