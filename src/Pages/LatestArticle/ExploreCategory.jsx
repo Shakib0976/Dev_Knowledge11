@@ -15,7 +15,7 @@ const ExploreCategory = () => {
     return (
         <div className='w-11/12 mx-auto my-20'>
             <h1 className='md:text-4xl text-2xl font-bold text-center mb-2'>Explore Categories</h1>
-            <p className='md:text-xl text-lg text-center mb-4 md:mb-8'>Find articles that match your interests</p>
+            <p className='md:text-xl text-lg text-center mb-4 md:mb-12'>Find articles that match your interests</p>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
