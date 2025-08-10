@@ -38,10 +38,10 @@ const AllArticle = () => {
 
     return (
         <div className='w-11/12 mx-auto'>
-            <div className="max-w-7xl mx-auto px-6 md:flex md:items-center md:justify-between mt-2 mb-16 gap-12">
+            <div className=" md:flex md:items-center md:justify-between mt-2 mb-16 gap-12">
                 {/* Text Content */}
                 {/* Left Content */}
-                <div className="md:w-1/2 text-center md:text-left">
+                <div className=" text-center md:text-left">
                     <h1 className="text-4xl md:text-5xl mb-3 mt-5 font-extrabold text-gradient ">
                         All Articles
                     </h1>

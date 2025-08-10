@@ -131,185 +131,211 @@ const MyArticle = () => {
 
 
     return (
-        <div className='w-11/12 mx-auto my-10 '>
-            <h1 className='text-2xl mt-15 mb-2 text-center md:text-5xl'>My Articles</h1>
-            <p className='text-center mb-8'>Manage your published articles</p>
-            <div className='bg-gray-100 dark:bg-gray-800 p-5'>
-                <div className="overflow-x-auto">
-                    <table className="table">
-                        {/* head */}
-                        <thead>
-                            <tr>
-                                <th className='text-lg '>Article</th>
-                                <th className='text-lg '>Category</th>
-                                <th className='text-lg '>Date</th>
-                                <th className='text-lg text-center '>ACTIONS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* row 1 */}
-                            {
-                                article.map(task =>
+        <div>
 
-                                    <tr key={task._id}>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
-                                            <div className='flex gap-2 text-center items-center'>
-                                                <div className=" h-12 w-12" >
-                                                    <img className='mask mask-squircle h-12 w-12' src={task?.url} alt="" />
-                                                </div>
-                                                {task.article}
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div>
-                                                {task.category}
-                                            </div>
+            <div>
 
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm t">
-                                            <div>
-                                                {task.date}
-                                            </div>
-                                        </td>
+                {article.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-16">
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/4076/4076507.png"
+                            alt="No Articles"
+                            className="w-32 h-32 opacity-70 mb-4"
+                        />
+                        <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+                            No articles found
+                        </h2>
+                        <p className="text-gray-500 dark:text-gray-400">
+                            You haven’t published any articles yet.
+                        </p>
+                    </div>
+                ) : (
+                    <div className='w-11/12 mx-auto my-10 '>
+                        <h1 className='text-2xl mt-15 mb-2 text-center md:text-4xl'>My Articles</h1>
+                        <p className='text-center mb-8'>Manage your published articles</p>
+                        <div  className='bg-gray-100 dark:bg-gray-800 p-5'>
+                            <div className="overflow-x-auto">
+                                <table className="table">
+                                    {/* head */}
+                                    <thead>
+                                        <tr>
+                                            <th className='text-lg '>Article</th>
+                                            <th className='text-lg '>Category</th>
+                                            <th className='text-lg '>Date</th>
+                                            <th className='text-lg text-center '>ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* row 1 */}
+                                        {
+                                            article.map(task =>
 
+                                                <tr key={task._id}>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">
+                                                        <div className='flex gap-2 text-center items-center'>
+                                                            <div className=" h-12 w-12" >
+                                                                <img className='mask mask-squircle h-12 w-12' src={task?.url} alt="" />
+                                                            </div>
+                                                            {task.article}
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div>
+                                                            {task.category}
+                                                        </div>
 
-                                        {/* updateButton  */}
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm cursor-pointer">
-
-
-                                            <div className='items-center justify-center flex gap-5'>
-                                                {/* update modal */}
-
-                                                <button className=" " onClick={() => {
-                                                    setArticleId(task._id); // Set the ID of the task being updated
-                                                    document.getElementById(`modal-${task._id}`).showModal();
-                                                }}><HiMiniPencilSquare size={25} /></button>
-                                                <dialog id={`modal-${task._id}`} className="modal modal-bottom sm:modal-middle">
-                                                    <div className="modal-box">
-                                                        <div className="p-6  border-1 border-gray-400 rounded-lg ">
-                                                            <form onSubmit={updateArticle}>
-                                                                <div className=' items-center justify-center  space-x-3'>
-                                                                    <fieldset className="fieldset w-full my-1">
-                                                                        <legend className=" fieldset-legend">Article Title *</legend>
-                                                                        <input type="text" defaultValue={task.article} name='article' className="input w-full" placeholder="Type article title " />
-                                                                    </fieldset>
-                                                                    <div>
-                                                                        <label className="block  font-medium mb-1 my-2 space-grotesk-500">Category</label>
-                                                                        <select name='category' className="w-full bg-base-100 px-4 py-2 border text-gray-500 rounded-md ">
-                                                                            <option >{task.category}</option>
-                                                                            <option>Development</option>
-                                                                            <option>Marketing</option>
-                                                                            <option>Video Editing</option>
-                                                                            <option>Programming</option>
-                                                                            <option>Business</option>
-                                                                            <option>Others</option>
-
-                                                                        </select>
-                                                                    </div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm t">
+                                                        <div>
+                                                            {task.date}
+                                                        </div>
+                                                    </td>
 
 
-                                                                </div>
-                                                                {/* text area  */}
-                                                                <fieldset className="fieldset">
-                                                                    <legend className="fieldset-legend">Content *</legend>
-                                                                    <textarea name='content' defaultValue={task.content} className="textarea w-full my-1 h-24" placeholder="write your article content here"></textarea>
-                                                                </fieldset>
-
-                                                                {/* tags */}
-                                                                <div className='justify-center items-center space-y-3'>
-                                                                    <div>
-                                                                        <label className="block mb-2 text-sm my-2">Tags </label>
-                                                                        <input
-                                                                            type="text"
-                                                                            name='tags'
-                                                                            defaultValue={task.tags.join(',')}
-                                                                            className="border border-gray-300 bg-base-100 p-2 rounded w-full"
-                                                                            placeholder="enter tags"
-                                                                        />
-                                                                        <p className='text-sm  text-gray-500'>Separate tags with commas</p>
-                                                                    </div>
-                                                                    <div>
-
-                                                                        <input name='date' defaultValue={task.date} type="date" className="input w-full mx-auto mt-1" />
-                                                                    </div>
-                                                                </div>
-
-                                                                {/* img url */}
-                                                                <label className="block  text-sm mt-4">Thumbnail URL</label>
-                                                                <label className="input bg-base-100 w-full mb-5 validator">
-                                                                    <svg className="h-[1em]  opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                                        <g
-                                                                            strokeLinejoin="round"
-                                                                            strokeLinecap="round"
-                                                                            strokeWidth="2.5"
-                                                                            fill="none"
-                                                                            stroke="currentColor"
-                                                                        >
-                                                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                                                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                                                                        </g>
-                                                                    </svg>
-                                                                    <input
-                                                                        type="url"
-                                                                        name='url'
-                                                                        defaultValue={task.url}
-                                                                        required
-                                                                        placeholder="https://"
-
-                                                                    />
-                                                                </label>
-                                                                <p className="validator-hint">Must be valid URL</p>
+                                                    {/* updateButton  */}
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm cursor-pointer">
 
 
+                                                        <div className='items-center justify-center flex gap-5'>
+                                                            {/* update modal */}
+
+                                                            <button className=" " onClick={() => {
+                                                                setArticleId(task._id); // Set the ID of the task being updated
+                                                                document.getElementById(`modal-${task._id}`).showModal();
+                                                            }}><HiMiniPencilSquare size={25} /></button>
+                                                            <dialog id={`modal-${task._id}`} className="modal modal-bottom sm:modal-middle">
+                                                                <div className="modal-box">
+                                                                    <div className="p-6  border-1 border-gray-400 rounded-lg ">
+                                                                        <form onSubmit={updateArticle}>
+                                                                            <div className=' items-center justify-center  space-x-3'>
+                                                                                <fieldset className="fieldset w-full my-1">
+                                                                                    <legend className=" fieldset-legend">Article Title *</legend>
+                                                                                    <input type="text" defaultValue={task.article} name='article' className="input w-full" placeholder="Type article title " />
+                                                                                </fieldset>
+                                                                                <div>
+                                                                                    <label className="block  font-medium mb-1 my-2 space-grotesk-500">Category</label>
+                                                                                    <select name='category' className="w-full bg-base-100 px-4 py-2 border text-gray-500 rounded-md ">
+                                                                                        <option >{task.category}</option>
+                                                                                        <option>Development</option>
+                                                                                        <option>Marketing</option>
+                                                                                        <option>Video Editing</option>
+                                                                                        <option>Programming</option>
+                                                                                        <option>Business</option>
+                                                                                        <option>Others</option>
+
+                                                                                    </select>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                            {/* text area  */}
+                                                                            <fieldset className="fieldset">
+                                                                                <legend className="fieldset-legend">Content *</legend>
+                                                                                <textarea name='content' defaultValue={task.content} className="textarea w-full my-1 h-24" placeholder="write your article content here"></textarea>
+                                                                            </fieldset>
+
+                                                                            {/* tags */}
+                                                                            <div className='justify-center items-center space-y-3'>
+                                                                                <div>
+                                                                                    <label className="block mb-2 text-sm my-2">Tags </label>
+                                                                                    <input
+                                                                                        type="text"
+                                                                                        name='tags'
+                                                                                        defaultValue={task.tags.join(',')}
+                                                                                        className="border border-gray-300 bg-base-100 p-2 rounded w-full"
+                                                                                        placeholder="enter tags"
+                                                                                    />
+                                                                                    <p className='text-sm  text-gray-500'>Separate tags with commas</p>
+                                                                                </div>
+                                                                                <div>
+
+                                                                                    <input name='date' defaultValue={task.date} type="date" className="input w-full mx-auto mt-1" />
+                                                                                </div>
+                                                                            </div>
+
+                                                                            {/* img url */}
+                                                                            <label className="block  text-sm mt-4">Thumbnail URL</label>
+                                                                            <label className="input bg-base-100 w-full mb-5 validator">
+                                                                                <svg className="h-[1em]  opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                                                    <g
+                                                                                        strokeLinejoin="round"
+                                                                                        strokeLinecap="round"
+                                                                                        strokeWidth="2.5"
+                                                                                        fill="none"
+                                                                                        stroke="currentColor"
+                                                                                    >
+                                                                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                                                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                                                                    </g>
+                                                                                </svg>
+                                                                                <input
+                                                                                    type="url"
+                                                                                    name='url'
+                                                                                    defaultValue={task.url}
+                                                                                    required
+                                                                                    placeholder="https://"
+
+                                                                                />
+                                                                            </label>
+                                                                            <p className="validator-hint">Must be valid URL</p>
 
 
 
-                                                                <div className='flex justify-center space-x-4'>
-                                                                    <button type='submit' class="flex items-center justify-center gap-2  w-full py-2 rounded-xl  text-white font-semibold
+
+
+                                                                            <div className='flex justify-center space-x-4'>
+                                                                                <button type='submit' class="flex items-center justify-center gap-2  w-full py-2 rounded-xl  text-white font-semibold
                                                                                     bg-gradient-to-r from-blue-600 to-purple-700
                                                                                     hover:from-blue-700 hover:to-purple-800
                                                                                     transition-all duration-300 ease-in-out
                                                                                     shadow-lg">
-                                                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                                                        </svg>
-                                                                        Publish Article
-                                                                    </button>
-                                                                </div>
-                                                                <div className='hidden'>
-                                                                    <h1 className='text-xl  my-5'>Author Information : </h1>
-                                                                    <div className='flex flex-col my-2'>
-                                                                        <input className='bg-base-100 py-2 my-1 w-full px-4' type="text" name='name' readOnly defaultValue={user?.displayName} />
-                                                                        <input className='bg-base-100 py-2 my-1 w-full px-4' readOnly type="text" name='email' defaultValue={user?.email} />
+                                                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                                                    </svg>
+                                                                                    Publish Article
+                                                                                </button>
+                                                                            </div>
+                                                                            <div className='hidden'>
+                                                                                <h1 className='text-xl  my-5'>Author Information : </h1>
+                                                                                <div className='flex flex-col my-2'>
+                                                                                    <input className='bg-base-100 py-2 my-1 w-full px-4' type="text" name='name' readOnly defaultValue={user?.displayName} />
+                                                                                    <input className='bg-base-100 py-2 my-1 w-full px-4' readOnly type="text" name='email' defaultValue={user?.email} />
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <form method="dialog">
+                                                                            {/* if there is a button in form, it will close the modal */}
+                                                                            <button className="w-full mt-2 btn">Close</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
-                                                            </form>
-                                                            <form method="dialog">
-                                                                {/* if there is a button in form, it will close the modal */}
-                                                                <button className="w-full mt-2 btn">Close</button>
-                                                            </form>
+                                                            </dialog>
+                                                            <button onClick={() => handleDelete(task._id)} className='text-red-600'><RiDeleteBin6Line size={25} /></button>
                                                         </div>
-                                                    </div>
-                                                </dialog>
-                                                <button onClick={() => handleDelete(task._id)} className='text-red-600'><RiDeleteBin6Line size={25} /></button>
-                                            </div>
-                                        </td>
+                                                    </td>
 
-                                        {/* deletebutton */}
+                                                    {/* deletebutton */}
 
-                                    </tr>
+                                                </tr>
 
-                                )
+                                            )
 
 
 
 
-                            }
+                                        }
 
-                        </tbody>
+                                    </tbody>
 
-                    </table>
-                </div>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                )}
+
             </div>
         </div>
     );

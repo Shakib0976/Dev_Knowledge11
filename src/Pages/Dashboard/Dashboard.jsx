@@ -94,11 +94,11 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen  dark:text-white text-black p-6">
             {/* Header */}
-            <div className="text-center mb-8">
+            <div className="text-center mb-15  mt-5 ">
                 <p className="text-gray-800 dark:text-gray-200">
                     {formattedDate} — {formattedTime}
                 </p>
-                <h1 className="text-3xl font-bold">Good Evening! <span className="text-yellow-400">{user?.displayName
+                <h1 className=" text-2xl md:text-3xl font-bold">Good Evening! <span className="text-yellow-400">{user?.displayName
                 }</span>,</h1>
             </div>
 
@@ -124,7 +124,7 @@ const Dashboard = () => {
                 <div className="dark:bg-gray-900 bg-white rounded-xl p-6 shadow">
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="font-semibold">Average view Tasks</h3>
-                        <button className="bg-gray-700 text-sm px-3 py-1 rounded">This Week</button>
+                        <button className="dark:bg-gray-700 bg-gray-200 text-sm px-3 py-1 rounded">This Week</button>
                     </div>
                     <p className="text-2xl font-bold">24.9 <span className="text-sm text-gray-400">Hours Spent</span></p>
                     <div className="h-60">
@@ -144,7 +144,7 @@ const Dashboard = () => {
                 <div className="dark:bg-gray-900 bg-white rounded-xl p-6 shadow">
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="font-semibold">Posted Tasks</h3>
-                        <button className="bg-gray-700 text-sm px-3 py-1 rounded">This Week</button>
+                        <button className="dark:bg-gray-700 bg-gray-200 text-sm px-3 py-1 rounded">This Week</button>
                     </div>
                     <div className="h-60 flex justify-center">
                         <ResponsiveContainer width="100%" height="100%">
