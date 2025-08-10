@@ -65,14 +65,8 @@ const LatestArticle = () => {
                             key={article._id}
                             className="relative w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl shadow-lg rounded-xl overflow-hidden
                          bg-white dark:bg-neutral-900 border dark:shadow-sm  dark:hover:shadow-blue-200 border-gray-300 dark:border-gray-700 "
-                        // whileHover={{
-                        //     scale: 1.03, // Slightly reduced scale for better visual on hover
-                        //     boxShadow: "0px 15px 40px rgba(0, 0, 0, 0.2)" // More pronounced shadow
-                        // }}
-                        // transition={{ duration: 0.3 }}
                         >
-                            {/* Image Overlay - if you want an actual image-full effect */}
-                            {/* <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${article.url})`, opacity: 0.2 }}></div> */}
+                           
 
                             <div className="flex items-center justify-between p-4 border-b border-gray-200">
                                 <div className="flex items-center">
@@ -89,7 +83,7 @@ const LatestArticle = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <Link  to={`/allArticle/${article._id}`} className="hoverButton">
+                                <Link  to={`/allArticle/${article._id}`} className="hoverButton dark:hover:bg-blue-900  dark:bg-blue-950 btn rounded-full text-white px-5 hover:bg-blue-700 bg-blue-500">
                                     Explore
                                 </Link>
                             </div>

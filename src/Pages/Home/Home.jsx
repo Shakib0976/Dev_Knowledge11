@@ -25,7 +25,7 @@ const Home = () => {
             </main>
 
             {/* Right Sidebar – spans 3 columns on large screens */}
-            <aside className="lg:col-span-3   hidden lg:block sticky top-25 h-screen overflow-y-auto p-4 
+            <aside className="lg:col-span-3   hidden lg:block sticky top-20 h-screen overflow-y-auto p-4 
                     dark:bg-gradient-to-r dark:from-black dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] 
                     border-base-100">
                 {/* Sidebar content */}

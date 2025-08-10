@@ -9,7 +9,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../Firebase/Firebase.config';
 import { AiFillHome } from "react-icons/ai";
 import { ShiftingDropDown } from './DropDown';
-import { FiHome, FiLayout, FiUser } from 'react-icons/fi';
+import { FiBookOpen, FiHome, FiInfo, FiLayout, FiUser } from 'react-icons/fi';
 
 const Navbar = () => {
     const { themeColor, toggleTheme } = useContext(ThemeContext);
@@ -85,7 +85,7 @@ const Navbar = () => {
         <div className=' sticky  top-0  z-50  '>
 
             <div>
-                <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-100 border-gray-50 dark:border-gray-600 w-full lg:px-8  shadow-sm mx-auto">
+                <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-200 border-gray-50 dark:border-gray-600 w-full lg:px-8  shadow-sm mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
 
@@ -102,7 +102,7 @@ const Navbar = () => {
                         </div>
                         <a style={{ fontFamily: 'Poppins' }} className="btn btn-ghost md:text-2xl font-bold">
                             <img
-                                className="w-16 md:w-20 lg:w-24"
+                                className="w-16 md:w-20 lg:w-20"
                                 src="https://i.ibb.co.com/pjQ4Kk0H/Orange-Accents-in-Developer-Logo-removebg-preview.png"
                                 alt="DevKnowledge Logo"
                             />
@@ -112,56 +112,87 @@ const Navbar = () => {
                         </a>
 
                     </div>
+
+                    {/* mobile device show  */}
+
                     <div className="grid grid-cols-3 ml-4  lg:hidden gap-12">
                         <Link to={'/'}
                             href="#"
                             className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
                         >
                             <FiHome size={25} className="mb-2 text-xl dark:text-white text-black" />
+                            <span className='-mt-2'>Home</span>
 
                         </Link>
-                        <a
-                            href="#"
+                        <NavLink
+                            to="/allArticle"
+                            className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                        >
+                            <FiBookOpen size={25} className="mb-2 text-xl dark:text-white text-black" />
+                            <span className='-mt-2'>Articles</span>
+                        </NavLink>
+                        <NavLink
+                            to="/about"
                             className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
                         >
-                            <FiUser size={25} className="mb-2 text-xl dark:text-white text-black" />
+                            <FiInfo size={25} className="mb-2 text-xl dark:text-white text-black" />
+                            <span className='-mt-2'>About</span>
+                        </NavLink>
 
-                        </a>
-                        <a
-                            href="#"
-                            className="flex w-full flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                        >
-                            <FiLayout size={25} className="mb-2 text-xl dark:text-white text-black" />
-
-                        </a>
                     </div>
-                    <div className="navbar-center hidden  lg:flex">
-                        <ul className="menu menu-horizontal px-1">
-                            <div className="grid grid-cols-3 gap-12">
-                                <Link to={'/'}
-                                    href="#"
-                                    className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
-                                >
-                                    <FiHome className="mb-2 text-xl dark:text-white text-black" />
-                                    <span className="text-xs">Home</span>
-                                </Link>
-                                <a
-                                    href="#"
-                                    className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
-                                >
-                                    <FiUser className="mb-2 text-xl dark:text-white text-black" />
-                                    <span className="text-xs">Profile</span>
-                                </a>
-                                <a
-                                    href="#"
-                                    className="flex w-full flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                                >
-                                    <FiLayout className="mb-2 text-xl dark:text-white text-black" />
-                                    <span className="text-xs">Dashboard</span>
-                                </a>
-                            </div>
+
+                    {/* desktop device  */}
+                    <div className="hidden lg:flex justify-center w-full py-4 bg-transparent">
+                        <ul className="flex gap-12">
+                            <NavLink
+                                to="/"
+                                className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                            >
+                                <FiHome size={25} className="text-xl dark:text-white text-black" />
+                                <span className="text-xs">Home</span>
+                            </NavLink>
+
+                            <NavLink
+                                to="/allArticle"
+                                className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                            >
+                                <FiBookOpen size={25} className=" text-xl dark:text-white text-black" />
+                                <span className="text-xs">All Articles</span>
+                            </NavLink>
+
+                            {
+                                user && <>
+                                    <NavLink
+
+                                    to={'/profile'}
+                                        href="#"
+                                        className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                                    >
+                                        <FiUser size={25} className=" text-xl dark:text-white text-black" />
+                                        <span className="text-xs">Profile</span>
+                                    </NavLink>
+
+                                    <NavLink
+                                    to={'/dashboard'}
+                                        href="#"
+                                        className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                                    >
+                                        <FiLayout size={25} className=" text-xl dark:text-white text-black" />
+                                        <span className="text-xs">Dashboard</span>
+                                    </NavLink></>
+                            }
+                            <NavLink
+                                to="/about"
+                                className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
+                            >
+                                <FiInfo size={25} className=" text-xl dark:text-white text-black" />
+                                <span className="text-xs">About Us</span>
+                            </NavLink>
                         </ul>
                     </div>
+
+                    {/* Mobile Bottom Navbar */}
+
                     <div className="navbar-end gap-5">
 
 
@@ -232,7 +263,7 @@ const Navbar = () => {
 
 
                         {user ? (
-                            <div className="dropdown dropdown-end">
+                            <div className="dropdown dropdown-end mr-4">
                                 <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-12 rounded-full content-center">
                                         {user?.photoURL ? (
@@ -244,8 +275,24 @@ const Navbar = () => {
                                 </div>
                                 <ul className="mt-3 z-[1] p-2 border shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60">
                                     <li>
-                                        <Link to={'/article'} className='text-sm font-semibold'>My Articles</Link>
-                                        <Link to={'/post'} className='text-sm font-semibold'>Post Articles</Link>
+                                        {
+                                            user && <div className='lg:hidden'>
+                                                <NavLink
+                                                    href="#"
+                                                    className=" text-neutral-400 transition-colors hover:text-neutral-50"
+                                                >
+                                                    <FiUser size={25} className="mb-2 text-xl dark:text-white text-black" />
+                                                    <span className="text-xs">Profile</span>
+                                                </NavLink>
+
+                                                <NavLink
+                                                    href="#"
+                                                    className=" text-neutral-400 transition-colors hover:text-neutral-50"
+                                                >
+                                                    <FiLayout size={25} className="mb-2 text-xl dark:text-white text-black" />
+                                                    <span className="text-xs">Dashboard</span>
+                                                </NavLink></div>
+                                        }
                                     </li>
                                     <li>
                                         <button onClick={logoutUser} className="btn btn-primary mt-1">Log Out</button>
@@ -270,8 +317,9 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className='hidden lg:block'>
-                < ShiftingDropDown />
+            <div className='hidden  lg:block'>
+              
+
             </div>
         </div>
 

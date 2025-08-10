@@ -25,7 +25,7 @@ const RootLayouts = () => {
 
             {/* aside */}
             <div className='flex flex-col md:flex-row '>
-                <aside className="w-70 h-screen sticky top-25 md:pt-8 dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] hidden lg:block dark:bg-gradient-to-r dark:from-black m-1 border-base-100 p-4 overflow-y-auto">
+                <aside className="w-70 h-screen sticky top-20 md:pt-8 dark:shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] hidden lg:block dark:bg-gradient-to-r dark:from-black  border-base-100 p-4 overflow-y-auto">
 
                     <div className="flex mb-4 h-15">
                         <div>
