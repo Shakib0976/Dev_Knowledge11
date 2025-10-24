@@ -53,7 +53,7 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-        fetch(`https://dev-talks-11-server.vercel.app/allTask/email/${user?.email}`, {
+        fetch(`http://localhost:3000/allTask/email/${user?.email}`, {
         })
             .then(res => res.json())
             .then(result => {
@@ -109,7 +109,7 @@ const Dashboard = () => {
                     <h2 className="text-3xl font-bold">12 hrs</h2>
                 </div>
                 <div className="dark:bg-gray-900 bg-white rounded-xl p-6 text-center shadow">
-                    <p className="text-gray-400">Total Post</p>
+                    <p className="text-gray-400">My Posted articles</p>
                     <h2 className="text-3xl font-bold">{article?.length || 0}</h2>
                 </div>
                 <div className="dark:bg-gray-900 bg-white rounded-xl p-6 text-center shadow">

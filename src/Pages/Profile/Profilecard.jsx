@@ -122,13 +122,13 @@ const ProfileCard = () => {
     );
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4">
+        <div className="min-h-screen  py-8 px-4">
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Profile Card */}
                     <div className="lg:col-span-2 space-y-8">
                         {/* Main Profile Section */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6">
                             <div className="flex flex-col md:flex-row items-center gap-6">
                                 {/* Profile Image */}
                                 <div className="relative">
@@ -216,7 +216,7 @@ const ProfileCard = () => {
                     {/* Stats Sidebar */}
                     <div className="space-y-6">
                         {/* Profile Stats */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                                 <FaChartLine className="text-green-600" />
                                 Profile Statistics
@@ -248,7 +248,7 @@ const ProfileCard = () => {
                         </div>
 
                         {/* Status & Badges */}
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                                 Status & Achievements
                             </h3>

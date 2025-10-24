@@ -92,7 +92,7 @@ const MyArticle = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+        <div className="min-h-screen py-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {article.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -121,7 +121,7 @@ const MyArticle = () => {
                         </div>
 
                         {/* Articles Table */}
-                        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                             <div className="overflow-x-auto">
                                 <table className="w-full">
                                     <thead className="bg-gray-50 dark:bg-gray-700/50">
@@ -218,7 +218,7 @@ const MyArticle = () => {
             {article.map(task => (
                 <dialog key={task._id} id={`modal-${task._id}`} className="modal">
                     <div className="modal-box max-w-4xl p-0 overflow-hidden">
-                        <div className="bg-white dark:bg-gray-800 rounded-lg">
+                        <div className="bg-white dark:bg-gray-900 rounded-lg">
                             {/* Modal Header */}
                             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                                 <div className="flex items-center justify-between">

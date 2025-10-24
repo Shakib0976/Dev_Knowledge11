@@ -107,14 +107,14 @@ const PostArticales = () => {
     }
 
     return (
-        <div className='min-h-screen bg-gray-50 dark:bg-gray-900 py-8'>
+        <div className='min-h-screen  py-8'>
             <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='text-center mb-8'>
                     <h1 className='text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3'>Post New Article</h1>
                     <p className='text-lg text-gray-600 dark:text-gray-400'>Share your knowledge with the community</p>
                 </div>
 
-                <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8'>
+                <div className='bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 md:p-8'>
                     <form onSubmit={handlePostArticles}>
                         {/* Article Title & Category */}
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-6'>
