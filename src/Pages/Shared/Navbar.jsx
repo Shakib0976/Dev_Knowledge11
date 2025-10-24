@@ -1,33 +1,41 @@
 import React, { use, useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
-import { MdDeveloperMode } from "react-icons/md";
 import { ThemeContext } from '../Theme/ThemeProvider';
 import { AuthContext } from '../../Context/AuthContext';
-import { RxAvatar } from 'react-icons/rx';
 import Swal from 'sweetalert2';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../Firebase/Firebase.config';
-import { AiFillHome } from "react-icons/ai";
-import { ShiftingDropDown } from './DropDown';
-import { FiBookOpen, FiHome, FiInfo, FiLayout, FiUser } from 'react-icons/fi';
+import logo1 from "../../assets/devLogo/Orange_Accents_in_Developer_Logo-removebg-preview.png"
+import {
+    Home,
+    BookOpen,
+    User,
+    LayoutDashboard,
+    Info,
+    Sun,
+    Moon,
+    LogOut,
+    Menu,
+    FileText,
+    PlusCircle,
+    UserCircle
+} from 'lucide-react';
 
 const Navbar = () => {
     const { themeColor, toggleTheme } = useContext(ThemeContext);
     const { user, setUser } = use(AuthContext);
 
-
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                setShowNavbar(false); // Hide on scroll down
+                setShowNavbar(false);
             } else {
-                setShowNavbar(true); // Show on scroll up
+                setShowNavbar(true);
             }
 
             setLastScrollY(currentScrollY);
@@ -37,10 +45,7 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
 
-
-
     const logoutUser = () => {
-
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -55,7 +60,7 @@ const Navbar = () => {
                     .then(() => {
                         console.log("User signed out");
                         localStorage.removeItem('devtalksToken');
-                        setUser(null); // Clear user from context
+                        setUser(null);
                     })
                     .catch((error) => {
                         console.log("Logout error:", error.message);
@@ -67,265 +72,181 @@ const Navbar = () => {
                 });
             }
         });
-
-
-
-
     }
 
-    const links = <>
-        <NavLink className='font-bold plus-jakarta-sans-500' to={'/'}>Home</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500' to={'/allArticle'} >All Articles</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500' to={'/article'}>My Articles</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500' to={'/post'}>Post Article</NavLink>
-        <NavLink className='font-bold plus-jakarta-sans-500' to={'/about'}>About Us</NavLink>
+    const NavIcon = ({ icon: Icon, label, to, mobile = false }) => (
+        <NavLink
+            to={to}
+            className={({ isActive }) =>
+                `flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-300 ${isActive
+                    ? 'text-[#6A5ACD] '
+                    : 'text-[#4A4A4A] dark:text-gray-400 hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] hover:text-[#6A5ACD] dark:hover:text-purple-400'
+                }`
+            }
+        >
+            <Icon size={mobile ? 20 : 22} className="mb-1" />
+            <span className="text-xs font-medium">{label}</span>
+        </NavLink>
+    );
 
-    </>
     return (
-        <div className=' sticky  top-0  z-50  '>
-
+        <div className='sticky top-0 z-50'>
             <div>
-                <div className="navbar dark:bg-gray-900 border-b-1 bg-gray-200 border-gray-50 dark:border-gray-600 w-full lg:px-8  shadow-sm mx-auto">
+                <div className="navbar bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 w-full lg:px-8 shadow-lg mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
-
-
-                            <ul
-                                tabIndex={0}
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                <div className='flex flex-col p-2 space-y-2 text-bold hover:bg-gray-200'>
-                                    {links}
+                            <div tabIndex={0} className="btn btn-ghost lg:hidden">
+                                <Menu size={24} className="text-[#4A4A4A] dark:text-gray-400" />
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl z-50 mt-3 w-52 p-4 shadow-xl border border-gray-200 dark:border-gray-700">
+                                <div className='flex flex-col space-y-3'>
+                                    <NavLink className='flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] font-semibold text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400' to={'/'}>
+                                        <Home size={18} />
+                                        Home
+                                    </NavLink>
+                                    <NavLink className='flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] font-semibold text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400' to={'/allArticle'}>
+                                        <BookOpen size={18} />
+                                        All Articles
+                                    </NavLink>
+                                    <NavLink className='flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] font-semibold text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400' to={'/article'}>
+                                        <FileText size={18} />
+                                        My Articles
+                                    </NavLink>
+                                    <NavLink className='flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] font-semibold text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400' to={'/post'}>
+                                        <PlusCircle size={18} />
+                                        Post Article
+                                    </NavLink>
+                                    <NavLink className='flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] font-semibold text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400' to={'/about'}>
+                                        <Info size={18} />
+                                        About Us
+                                    </NavLink>
                                 </div>
-
-
                             </ul>
                         </div>
-                        <a style={{ fontFamily: 'Poppins' }} className="btn btn-ghost md:text-2xl font-bold">
-                            <img
-                                className="w-16 md:w-20 lg:w-20"
-                                src="https://i.ibb.co.com/pjQ4Kk0H/Orange-Accents-in-Developer-Logo-removebg-preview.png"
-                                alt="DevKnowledge Logo"
-                            />
-                            <span className="hidden md:inline ml-2">
-                                Dev<span className="text-orange-400">Knowledge</span>
+
+                        <Link to="/" className="btn btn-ghost text-xl font-bold">
+                            <div className=" items-center justify-center mr-1">
+                                <img className='w-15' src={logo1} alt="" />
+                            </div>
+                            <span className="hidden md:inline">
+                                Dev<span className="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] text-transparent bg-clip-text">Knowledge</span>
                             </span>
-                        </a>
-
-                    </div>
-
-                    {/* mobile device show  */}
-
-                    <div className="grid grid-cols-3 ml-4  lg:hidden gap-12">
-                        <Link to={'/'}
-                            href="#"
-                            className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
-                        >
-                            <FiHome size={25} className="mb-2 text-xl dark:text-white text-black" />
-                            <span className='-mt-2'>Home</span>
-
                         </Link>
-                        <NavLink
-                            to="/allArticle"
-                            className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                        >
-                            <FiBookOpen size={25} className="mb-2 text-xl dark:text-white text-black" />
-                            <span className='-mt-2'>Articles</span>
-                        </NavLink>
-                        <NavLink
-                            to="/about"
-                            className="flex w-full flex-col items-center justify-center  text-neutral-400 transition-colors hover:text-neutral-50"
-                        >
-                            <FiInfo size={25} className="mb-2 text-xl dark:text-white text-black" />
-                            <span className='-mt-2'>About</span>
-                        </NavLink>
-
                     </div>
 
-                    {/* desktop device  */}
-                    <div className="hidden lg:flex justify-center w-full py-4 bg-transparent">
-                        <ul className="flex gap-12">
-                            <NavLink
-                                to="/"
-                                className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                            >
-                                <FiHome size={25} className="text-xl dark:text-white text-black" />
-                                <span className="text-xs">Home</span>
-                            </NavLink>
-
-                            <NavLink
-                                to="/allArticle"
-                                className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                            >
-                                <FiBookOpen size={25} className=" text-xl dark:text-white text-black" />
-                                <span className="text-xs">All Articles</span>
-                            </NavLink>
-
-                            {
-                                user && <>
-                                    <NavLink
-
-                                    to={'/profile'}
-                                        href="#"
-                                        className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                                    >
-                                        <FiUser size={25} className=" text-xl dark:text-white text-black" />
-                                        <span className="text-xs">Profile</span>
-                                    </NavLink>
-
-                                    <NavLink
-                                    to={'/dashboard'}
-                                      
-                                        className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                                    >
-                                        <FiLayout size={25} className=" text-xl dark:text-white text-black" />
-                                        <span className="text-xs">Dashboard</span>
-                                    </NavLink></>
-                            }
-                            <NavLink
-                                to="/about"
-                                className="flex flex-col items-center justify-center text-neutral-400 transition-colors hover:text-neutral-50"
-                            >
-                                <FiInfo size={25} className=" text-xl dark:text-white text-black" />
-                                <span className="text-xs">About Us</span>
-                            </NavLink>
-                        </ul>
+                    {/* Mobile Navigation */}
+                    <div className="grid grid-cols-3 lg:hidden gap-4 mx-auto">
+                        <NavIcon icon={Home} label="Home" to="/" mobile={true} />
+                        <NavIcon icon={BookOpen} label="Articles" to="/allArticle" mobile={true} />
+                        <NavIcon icon={Info} label="About" to="/about" mobile={true} />
                     </div>
 
-                    {/* Mobile Bottom Navbar */}
+                    {/* Desktop Navigation */}
+                    <div className="hidden lg:flex justify-center w-full py-2 bg-transparent">
+                        <div className="flex gap-8">
+                            <NavIcon icon={Home} label="Home" to="/" />
+                            <NavIcon icon={BookOpen} label="All Articles" to="/allArticle" />
+                            {user && (
+                                <>
+                                    <NavIcon icon={FileText} label="My Articles" to="/article" />
+                                    <NavIcon icon={PlusCircle} label="Post Article" to="/post" />
+                                    <NavIcon icon={User} label="Profile" to="/profile" />
+                                    <NavIcon icon={LayoutDashboard} label="Dashboard" to="/dashboard" />
+                                </>
+                            )}
+                            <NavIcon icon={Info} label="About Us" to="/about" />
+                        </div>
+                    </div>
 
-                    <div className="navbar-end gap-5">
-
-
-
-                        {/* Toogle theme contronl button  button */}
-
-                        <button onClick={toggleTheme}>
-
-
-                            {/* mobilde theme */}
-
-                            {/* <label className="btn rounded-full flex md:hidden ml-4 -mt-6 cursor-pointer gap-2">
-                                {themeColor === 'light' ? (
-                                    // Show Moon icon for switching to dark
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" strokeWidth="2"
-                                        strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                                    </svg>
-                                ) : (
-                                    // Show Sun icon for switching to light
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="20" height="20" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" strokeWidth="2"
-                                        strokeLinecap="round" strokeLinejoin="round">
-                                        <circle cx="12" cy="12" r="5" />
-                                        <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4
-                 M18.4 18.4l1.4 1.4M1 12h2M21 12h2
-                 M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                                    </svg>
-                                )}
-                            </label> */}
-
-                            {/* large device  */}
-
-                            <div className='hidden md:block'>
-                                <label className="flex  mr-2 cursor-pointer gap-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round">
-                                        <circle cx="12" cy="12" r="5" />
-                                        <path
-                                            d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-                                    </svg>
-                                    <input type="checkbox" value="synthwave" className="toggle theme-controller" />
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round">
-                                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                                    </svg>
-                                </label></div></button>
-
-
+                    <div className="navbar-end gap-4">
+                        {/* Theme Toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-xl bg-[#EAE0FF] dark:bg-[#2E1F47] hover:bg-[#6A5ACD] dark:hover:bg-purple-700 transition-colors duration-300"
+                        >
+                            {themeColor === 'light' ? (
+                                <Moon size={20} className="text-[#6A5ACD] dark:text-purple-400" />
+                            ) : (
+                                <Sun size={20} className="text-amber-500" />
+                            )}
+                        </button>
 
                         {user ? (
-                            <div className="dropdown dropdown-end mr-4">
+                            <div className="dropdown dropdown-end">
                                 <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-12 rounded-full content-center">
+                                    <div className="w-10 h-10 rounded-full border-2 border-[#EAE0FF] dark:border-[#2E1F47] overflow-hidden">
                                         {user?.photoURL ? (
-                                            <img src={user?.photoURL} alt="User Avatar" />
+                                            <img src={user?.photoURL} alt="User Avatar" className="w-full h-full object-cover" />
                                         ) : (
-                                            <RxAvatar className="w-full h-full text-2xl" />
+                                            <div className="w-full h-full bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] flex items-center justify-center">
+                                                <UserCircle size={20} className="text-white" />
+                                            </div>
                                         )}
                                     </div>
                                 </div>
-                                <ul className="mt-3 z-[1] p-2 border shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60">
-                                    <li>
-                                        {
-                                            user && <div className='lg:hidden'>
-                                                <NavLink
-                                                    to={'/profile'}
-                                                    className=" text-neutral-400 transition-colors hover:text-neutral-50"
-                                                >
-                                                    <FiUser size={25} className="mb-2 text-xl dark:text-white text-black" />
-                                                    <span className="text-xs">Profile</span>
-                                                </NavLink>
-
-                                                <NavLink
-                                                        to={'/dashboard'}
-                                                    className=" text-neutral-400 transition-colors hover:text-neutral-50"
-                                                >
-                                                    <FiLayout size={25} className="mb-2 text-xl dark:text-white text-black" />
-                                                    <span className="text-xs">Dashboard</span>
-                                                </NavLink></div>
-                                        }
+                                <ul className="mt-3 z-[1] p-3 shadow-xl menu menu-sm dropdown-content bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700 w-56">
+                                    <li className="p-2 border-b border-gray-200 dark:border-gray-600 mb-2">
+                                        <div className="flex flex-col">
+                                            <span className="font-semibold text-[#4A4A4A] dark:text-white truncate">
+                                                {user.displayName || 'User'}
+                                            </span>
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                                                {user.email}
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li className="lg:hidden space-y-1 mb-2">
+                                        <NavLink to="/profile" className="flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400">
+                                            <User size={18} />
+                                            Profile
+                                        </NavLink>
+                                        <NavLink to="/dashboard" className="flex items-center gap-3 p-2 rounded-lg hover:bg-[#EAE0FF] dark:hover:bg-[#2E1F47] text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400">
+                                            <LayoutDashboard size={18} />
+                                            Dashboard
+                                        </NavLink>
                                     </li>
                                     <li>
-                                        <button onClick={logoutUser} className="btn btn-primary mt-1">Log Out</button>
+                                        <button
+                                            onClick={logoutUser}
+                                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 w-full text-left"
+                                        >
+                                            <LogOut size={18} />
+                                            Log Out
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
                         ) : (
-                            <div>
-                                <div className=' hidden lg:block space-x-3'>
-                                    <Link className='  hover-underline' to={'/login'}>login</Link>
-                                    <Link className=' btn glow-on-hover ' to={'/register'}>Create Account</Link>
-
-
+                            <div className="flex items-center gap-3">
+                                <div className="hidden lg:block space-x-3">
+                                    <Link
+                                        to="/login"
+                                        className="px-4 py-2 text-[#4A4A4A] dark:text-gray-400 hover:text-[#6A5ACD] dark:hover:text-purple-400 font-medium transition-colors duration-300"
+                                    >
+                                        Login
+                                    </Link>
+                                    <Link
+                                        to="/register"
+                                        className="px-6 py-2 bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] hover:from-[#5A4ABC] hover:to-[#834ADF] text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                                    >
+                                        Create Account
+                                    </Link>
                                 </div>
-                                <div>
-                                    <Link className=' btn bg-blue-400 lg:hidden text-white rounded-2xl mb-2  ' to={'/register'}>Signin</Link>
+                                <div className="lg:hidden">
+                                    <Link
+                                        to="/register"
+                                        className="px-4 py-2 bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] hover:from-[#5A4ABC] hover:to-[#834ADF] text-white rounded-xl font-semibold text-sm"
+                                    >
+                                        Sign Up
+                                    </Link>
                                 </div>
-
                             </div>
-
                         )}
                     </div>
                 </div>
             </div>
-            <div className='hidden  lg:block'>
-              
-
-            </div>
         </div>
-
     );
 };
 
 export default Navbar;
-
-

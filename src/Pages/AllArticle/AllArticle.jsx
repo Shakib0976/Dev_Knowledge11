@@ -45,7 +45,7 @@ const AllArticle = () => {
                     <h1 className="text-4xl md:text-5xl mb-3 mt-5 font-extrabold text-gradient ">
                         All Articles
                     </h1>
-                    <p className="text-lg md:text-lg text-gray-700 dark:text-gray-300 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    <p className="text-sm md:text-lg text-gray-700 dark:text-gray-300  mb-5 md:mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
                         Explore our curated collection of articles, tips, and insights to
                         empower your growth and knowledge.
                     </p>

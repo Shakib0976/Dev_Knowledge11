@@ -72,7 +72,7 @@ const Login = () => {
     return (
         <div className="min-h-screen colorgp flex flex-col lg:flex-row items-center justify-center lg:mx-20 px-4 py-8 bg-gray-50 dark:bg-black">
             {/* Left Section - Text + Lottie */}
-            <div className="flex-1 w-full flex flex-col items-center justify-center text-center mb-2 lg:mb-0">
+            <div className="flex-1 hidden md:flex w-full  flex-col items-center justify-center text-center mb-2 lg:mb-0">
                 <p className="space-grotesk-500 text-gray-500 font-semibold text-center  lg:mt-0">
                     Welcome Back
                 </p>

@@ -21,7 +21,7 @@ const Banner = () => {
 
     return (
         <div className=' bg-cover     flex flex-col items-center justify-center'>
-            <div class="badge badge-sm md:badge-lg text-sm md:mb-8 mb-4 bg-[#EAE0FF] dark:bg-[#2E1F47]">
+            <div class="badge badge-sm md:badge-lg text-sm md:mb-8 mt-5 mb-2 bg-[#EAE0FF] dark:bg-[#2E1F47]">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2 2m-2-2m2 2l2 2M10 9v6m4-3H6m3-3h6m-3 6v6m3-3h-6m9-9v4m-2-2h4m5 16l2 2m-2-2m2 2l2 2M10 12h4m-2 0V8m0 4v4" />
                 </svg>
@@ -31,7 +31,7 @@ const Banner = () => {
                 <span >Share Your</span>
                 <span class="bg-gradient-to-r from-[#6A5ACD] to-[#935BEF] dark:bg-gradient-to-r dark:from-purple-600 dark:via-pink-500 dark:to-yellow-400 text-transparent bg-clip-text">Knowledge</span>
             </h1>
-            <p class="text-[#4A4A4A] dark:text-gray-400 text-sm text-center   mb-2 md:mb-10">
+            <p class="text-[#4A4A4A] dark:text-gray-400 text-sm text-center   mb-8 md:mb-10">
                 Join a vibrant community of learners and experts. Discover insights, share your expertise, and contribute to the collective wisdom of our platform.
             </p>
         </div>

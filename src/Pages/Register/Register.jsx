@@ -65,14 +65,14 @@ const Register = () => {
 
     return (
         <div className="min-h-screen colorgp flex flex-col  lg:flex-row items-center justify-center px-4 py-8 bg-gray-50 dark:bg-black ">
-            <div className="w-full flex flex-col md:w-1/2 mb-8 items-center justify-center md:mb-0 text-center">
+            <div className="w-full hidden  md:flex flex-col md:w-1/2 mb-8 items-center justify-center md:mb-0 text-center">
 
                 <h1 className="text-3xl home-title lg:text-4xl font-bold text-gray-800 dark:text-white"> <span className='dark:text-white'>Create Your Account</span></h1>
                 <p className="text-gray-500 mb-2 dark:text-gray-300 mt-2">Please enter your details to sign up.</p>
                 <Lottie animationData={loaderAnimation} loop={true} className="w-78 hidden lg:flex mt-5 h-78" />
             </div>
 
-            <div className="w-full max-w-md p-8  rounded-2xl shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] bg-gradient-to-br  bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700">
+            <div className="w-full max-w-md mt-6 p-8   rounded-2xl shadow-[0_0_5px_rgba(110,69,226,0.5),_0_0_10px_rgba(136,211,206,0.3)] bg-gradient-to-br  bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700">
                 <form onSubmit={handleCreateUser} className="space-y-2">
                     <div>
                         <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300">Name</label>

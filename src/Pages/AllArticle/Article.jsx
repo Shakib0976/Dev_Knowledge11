@@ -10,16 +10,17 @@ import Swal from 'sweetalert2';
 import { AiFillLike } from 'react-icons/ai';
 import toast from 'react-hot-toast';
 
-
 const Article = () => {
-
     const [comments, setComments] = useState([]);
-    const [taskId, setTaskId] = useState(null)
+    const [taskId, setTaskId] = useState(null);
     const [status, setStatus] = useState('idle');
+    const task = useLoaderData();
+    const { user } = use(AuthContext);
+    const [liked, setLiked] = useState(task?.likeBy.includes(user?.email));
+    const [likeCount, setLikeCount] = useState(task?.likeBy.length || 0);
 
     const handleClick = () => {
         if (status !== 'idle') return;
-
         setStatus('loading');
         setTimeout(() => {
             setStatus('done');
@@ -29,19 +30,13 @@ const Article = () => {
         }, 2250);
     };
 
-
-
     useEffect(() => {
         axios.get(`https://dev-talks-11-server.vercel.app/comment/${taskId}`)
             .then(res => {
-                console.log(res.data);
                 setComments(res.data);
                 setTaskId(task._id);
-            })
+            });
     }, [taskId]);
-
-
-
 
     const HandlePostFrom = async (e) => {
         e.preventDefault();
@@ -54,8 +49,7 @@ const Article = () => {
             user_name: user?.displayName,
             user_email: user?.email,
             user_photo: user?.photoURL,
-        }
-        console.log(commentData);
+        };
 
         try {
             const response = await axios.put(`https://dev-talks-11-server.vercel.app/allTask/comment/${taskId}`, {
@@ -64,12 +58,9 @@ const Article = () => {
                     email: user?.email,
                 },
             });
-
-            console.log('Comment added:', response.data);
         } catch (error) {
             console.error('Error adding comment:', error);
         }
-
 
         axios.post('https://dev-talks-11-server.vercel.app/comment', commentData)
             .then(res => {
@@ -81,212 +72,237 @@ const Article = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-
-                    setComments(prevComments => [...prevComments, { ...commentData, _id: res.data.insertedId }
-                    ]);
+                    setComments(prevComments => [...prevComments, { ...commentData, _id: res.data.insertedId }]);
                 }
-
-                console.log(res.data);
                 form.reset();
             })
             .catch(err => {
                 console.log(err);
-            })
-    }
-
-
-
-
-
-
-
-
-    const task = useLoaderData();
-    // console.log(task);
-    const { user } = use(AuthContext);
-    console.log(task);
-
-
-
-    const [liked, setLiked] = useState(task?.likeBy.includes(user?.email))
-
-
-    const [likeCount, setLikeCount] = useState(task?.likeBy.length || 0);
-
-
-
+            });
+    };
 
     const handleLike = () => {
-        if (user?.email === task?.email) return toast.error('you can not like your own article')
-
-
+        if (user?.email === task?.email) return toast.error('You cannot like your own article');
 
         axios.patch(`https://dev-talks-11-server.vercel.app/like/${task._id}`, { email: user?.email })
             .then(data => {
-                console.log(data.data);
                 const isLiked = data?.data?.liked;
-
                 if (isLiked) {
-                    toast.success('like success')
+                    toast.success('Like successful');
+                } else {
+                    toast.success('Dislike successful');
                 }
-                else {
-                    toast.success('disLike Success')
-                }
-
-                // set like state
-                setLiked(isLiked)
-
-                // updated like count
-
-                setLikeCount(prevLike => (isLiked ? prevLike + 1 : prevLike - 1))
+                setLiked(isLiked);
+                setLikeCount(prevLike => (isLiked ? prevLike + 1 : prevLike - 1));
             })
             .catch(err => {
                 console.log(err);
-            })
-    }
-
+            });
+    };
 
     return (
-        <div className='mx-auto w-11/12 md:w-[60%]'>
-            <div>
-                <Link to={'/allArticle'} className='btn mt-15 mb-5'> <FaArrowLeftLong /> Back</Link>
-            </div>
-            <div className="w-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 shadow-md rounded-xl overflow-hidden">
-                <div className="card-body p-4 md:p-6 dark:text-white text-gray-800">
-                    <img className="rounded-xl w-full max-w-3xl mx-auto object-cover" src={task.url} alt="task cover" />
+        <div className="max-w-4xl mx-auto px-4 py-8">
+            {/* Navigation */}
+            <nav className="mb-8">
+                <Link
+                    to={'/allArticle'}
+                    className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 font-medium"
+                >
+                    <FaArrowLeftLong className="text-sm" />
+                    Back to Articles
+                </Link>
+            </nav>
 
-                    <h2 className="text-xl md:text-2xl font-semibold mt-4 mb-2">Category: {task.category}</h2>
-                    <h1 className="text-lg md:text-xl font-medium mb-2">Title: {task.article}</h1>
+            {/* Article Card */}
+            <article className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 mb-8">
+                <div className="p-6 md:p-8">
+                    {/* Article Image */}
+                    <div className="mb-6">
+                        <img
+                            className="rounded-xl w-full h-auto max-h-96 object-cover shadow-md"
+                            src={task.url}
+                            alt="Article cover"
+                        />
+                    </div>
 
-                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
-                        <span className="font-semibold">Content:</span> {task.content}
-                    </p>
+                    {/* Article Metadata */}
+                    <div className="space-y-4 mb-6">
+                        <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
+                            <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">
+                                {task.category}
+                            </span>
+                            <span className="text-gray-500 dark:text-gray-400">
+                                {task.date}
+                            </span>
+                        </div>
+
+                        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+                            {task.article}
+                        </h1>
+                    </div>
+
+                    {/* Article Content */}
+                    <div className="prose prose-gray dark:prose-invert max-w-none mb-6">
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
+                            {task.content}
+                        </p>
+                    </div>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="font-semibold text-lg">Tags:</span>
-                        {task.tags.map((tag, index) => (
-                            <span
-                                key={index}
-                                className="bg-green-200 dark:bg-green-500 text-sm px-3 py-1 rounded-2xl text-gray-800 dark:text-white"
-                            >
-                                {tag}
-                            </span>
-                        ))}
+                    <div className="mb-6">
+                        <div className="flex flex-wrap gap-2">
+                            {task.tags.map((tag, index) => (
+                                <span
+                                    key={index}
+                                    className="px-3 py-1.5 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full"
+                                >
+                                    #{tag}
+                                </span>
+                            ))}
+                        </div>
                     </div>
 
                     {/* Author & Stats */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
                         <div className="flex items-center gap-3">
                             {task?.Author_Photo ? (
-                                <img className="rounded-full w-12 h-12 object-cover" src={task.Author_Photo} alt="Author Avatar" />
+                                <img
+                                    className="rounded-full w-12 h-12 object-cover border-2 border-gray-200 dark:border-gray-600"
+                                    src={task.Author_Photo}
+                                    alt="Author Avatar"
+                                />
                             ) : (
-                                <RxAvatar size={48} className="text-gray-500" />
+                                <RxAvatar size={48} className="text-gray-400" />
                             )}
                             <div>
-                                <p className="text-base font-medium">{task.name}</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">Date: {task.date}</p>
+                                <p className="font-semibold text-gray-900 dark:text-white">{task.name}</p>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">Author</p>
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-6 text-sm text-gray-700 dark:text-gray-300">
-                            <div className="hidden md:flex items-center gap-2">
-                                <BiLike size={20} />
-                                {likeCount} Likes
+                        <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+                            <div className="flex items-center gap-2">
+                                <BiLike size={18} />
+                                <span className="font-medium">{likeCount} Likes</span>
                             </div>
-                            <div className="hidden md:flex items-center gap-2">
-                                <FaRegComment size={20} />
-                                {comments.length} Comments
+                            <div className="flex items-center gap-2">
+                                <FaRegComment size={16} />
+                                <span className="font-medium">{comments.length} Comments</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Like Button */}
-                    <div className="mt-5">
+                    <div className="mt-6">
                         <button
                             onClick={handleLike}
-                            className="flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-700 text-blue-700 dark:text-white rounded-lg hover:bg-blue-200 dark:hover:bg-blue-600 transition"
+                            className={`flex items-center gap-3 px-6 py-3 rounded-xl font-medium transition-all duration-200 ${liked
+                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                                }`}
                         >
-                            {liked ? <AiFillLike size={22} /> : <BiLike size={22} />}
-                            <span className="text-sm font-medium">{likeCount}</span>
+                            {liked ? <AiFillLike size={20} /> : <BiLike size={20} />}
+                            <span>{liked ? 'Liked' : 'Like'}</span>
+                            <span className="bg-white/20 px-2 py-1 rounded-full text-sm">
+                                {likeCount}
+                            </span>
                         </button>
                     </div>
                 </div>
-            </div>
+            </article>
 
-
-            {/* comment box */}
-            {/* Comment Box */}
-            <div className="my-6 rounded-lg bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 shadow-md">
-                <div className="px-4 py-3 border-b border-gray-300 dark:border-gray-600">
-                    <h1 className="flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-white">
-                        <FaRegComment /> {comments.length} Comment
-                    </h1>
+            {/* Comments Section */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                {/* Comments Header */}
+                <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                            <FaRegComment className="text-blue-600 dark:text-blue-400" size={18} />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                                Comments
+                            </h2>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                                {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <form onSubmit={HandlePostFrom} className="px-4 py-3">
-                    <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+                {/* Comment Form */}
+                <form onSubmit={HandlePostFrom} className="p-6 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex gap-4">
                         <div className="flex-shrink-0">
                             {user?.photoURL ? (
                                 <img
-                                    className="rounded-full w-12 h-12 object-cover"
+                                    className="rounded-full w-10 h-10 object-cover border border-gray-200 dark:border-gray-600"
                                     src={user?.photoURL}
                                     alt="User Avatar"
                                 />
                             ) : (
-                                <RxAvatar size={48} className="text-gray-500" />
+                                <RxAvatar size={40} className="text-gray-400" />
                             )}
                         </div>
-
-                        <div className="flex-1 min-w-0">
+                        <div className="flex-1">
                             <textarea
                                 name="comment"
-                                className="textarea textarea-bordered w-full rounded-md resize-none min-h-[80px] dark:bg-gray-900 dark:text-white"
-                                placeholder="Write your comment..."
+                                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                                placeholder="Share your thoughts..."
+                                rows="3"
                             ></textarea>
+                            <div className="flex justify-end mt-3">
+                                <button
+                                    type="submit"
+                                    className={`fancy-button ${status === 'loading' ? 'onclic' : ''} ${status === 'done' ? 'validate' : ''}`}
+                                    onClick={handleClick}
+                                ></button>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="flex justify-end mt-3">
-                        <button
-                            type="submit"
-                            className={`fancy-button ${status === 'loading' ? 'onclic' : ''} ${status === 'done' ? 'validate' : ''}`}
-                            onClick={handleClick}
-                        ></button>
                     </div>
                 </form>
 
-                <div className="px-4 pb-4">
-                    {comments.map((comment) => (
-                        <div
-                            key={comment._id}
-                            className="flex flex-col sm:flex-row items-start gap-3 py-3 border-t border-gray-200 dark:border-gray-700"
-                        >
-                            <div className="flex-shrink-0">
-                                {comment.user_photo ? (
-                                    <img
-                                        className="rounded-full w-10 h-10 object-cover"
-                                        src={comment.user_photo}
-                                        alt="User Avatar"
-                                    />
-                                ) : (
-                                    <RxAvatar size={32} className="text-gray-500" />
-                                )}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <h2 className="text-sm font-semibold text-gray-800 dark:text-white">
-                                    {comment.user_name}
-                                </h2>
-                                <p className="mt-1 text-sm bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-3 rounded-md break-words">
-                                    {comment.comment}
-                                </p>
-                            </div>
+                {/* Comments List */}
+                <div className="p-6">
+                    {comments.length === 0 ? (
+                        <div className="text-center py-8">
+                            <FaRegComment className="mx-auto text-gray-400 mb-3" size={32} />
+                            <p className="text-gray-500 dark:text-gray-400">No comments yet. Be the first to share your thoughts!</p>
                         </div>
-                    ))}
+                    ) : (
+                        <div className="space-y-6">
+                            {comments.map((comment) => (
+                                <div
+                                    key={comment._id}
+                                    className="flex gap-4 pb-6 last:pb-0 last:border-b-0 border-b border-gray-100 dark:border-gray-700"
+                                >
+                                    <div className="flex-shrink-0">
+                                        {comment.user_photo ? (
+                                            <img
+                                                className="rounded-full w-10 h-10 object-cover border border-gray-200 dark:border-gray-600"
+                                                src={comment.user_photo}
+                                                alt="User Avatar"
+                                            />
+                                        ) : (
+                                            <RxAvatar size={40} className="text-gray-400" />
+                                        )}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="mb-2">
+                                            <h3 className="font-semibold text-gray-900 dark:text-white">
+                                                {comment.user_name}
+                                            </h3>
+                                        </div>
+                                        <p className="text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl leading-relaxed">
+                                            {comment.comment}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
-            </div>
-
-
+            </section>
         </div>
     );
 };
